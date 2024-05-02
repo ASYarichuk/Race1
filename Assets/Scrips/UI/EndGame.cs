@@ -13,6 +13,6 @@ public class EndGame : MonoBehaviour
     private void OnEnable()
     {
         _place = _circleCounter.GivePlace();
-        _finishText.text = $"Гонка закончилась\n\nТвое место: {_place}";
+        _finishText.text = $"Гонка завершилась. Ты занял {_place} место.";
     }
 }

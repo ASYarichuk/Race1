@@ -6,7 +6,7 @@ public class Chest : MonoBehaviour
 {
     private int _timeOpened = 5;
 
-    public int GibeTimeOpened()
+    public int GiveTimeOpened()
     {
         return _timeOpened;
     }

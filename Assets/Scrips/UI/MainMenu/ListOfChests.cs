@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ListOfChests : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _closeChests;
-    [SerializeField] private GameObject[] _openChests;
+    [SerializeField] private Sprite[] _closeChests;
+    [SerializeField] private Sprite[] _openChests;
 
     public void GiveCloseChest(int index)
     {

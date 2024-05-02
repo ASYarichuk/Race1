@@ -26,6 +26,12 @@ public class Card : MonoBehaviour
     public void AddCount(int count)
     {
         _currentCount += count;
+
+        if (_currentCount > _cardForLevelUp[_currentLevel])
+        {
+            AddLevel();
+            _currentCount -= _cardForLevelUp[_currentLevel];
+        }
     }
 
     private void AddLevel()
