@@ -8,13 +8,13 @@ public class ListOfChests : MonoBehaviour
     [SerializeField] private Sprite[] _closeChests;
     [SerializeField] private Sprite[] _openChests;
 
-    public void GiveCloseChest(int index)
+    public Sprite GiveCloseChest(int index)
     {
-
+        return _closeChests[index];
     }
 
-    public void GiveOpenChest(int index)
+    public Sprite GiveOpenChest(int index)
     {
-
+        return _openChests[index];
     }
 }

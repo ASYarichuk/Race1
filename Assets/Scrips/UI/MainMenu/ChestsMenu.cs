@@ -14,4 +14,9 @@ public class ChestsMenu : MonoBehaviour
 
         }
     }
+
+    public static void AddChest(int index)
+    {
+
+    }
 }
