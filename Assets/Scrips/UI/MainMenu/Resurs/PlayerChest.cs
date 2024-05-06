@@ -8,11 +8,11 @@ public static class PlayerChest
 
     public static bool GivenChest { get; private set; } = false;
 
+    private static List<Chest> _chests = new List<Chest>();
+
     public static void ChangeChest(int index)
     {
         CurrentChest = index;
-        ChestsMenu.AddChest(index);
-
         GivenChest = true;
     }
 

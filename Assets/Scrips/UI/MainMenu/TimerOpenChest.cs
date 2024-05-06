@@ -5,26 +5,40 @@ using UnityEngine;
 
 public class TimerOpenChest : MonoBehaviour
 {
-    [SerializeField] private string _text = "Время до открытия следующего сундука: ";
-
     [SerializeField] private TMP_Text _tMP;
 
-    [SerializeField] private float _timeOpen = 30;
+    private string _text = "Время открытия сундука: ";
+    private string _textAllChestsOpen = "Все сундуки открыты";
 
-    private int hours;
-    private int minutes;
-    private int seconds;
+    private float _timeOpen = 0;
 
-    private int transferHours = 3600;
-    private int transferMinutes = 60;
+    private int _hours = 0;
+    private int _minutes = 0;
+    private int _seconds = 0;
+    private int _transferHours = 3600;
+    private int _transferMinutes = 60;
+
+    private bool _isOpenChest = false;
+
+    private void Awake()
+    {
+        _tMP.text = _text + $"{_hours:00} : {_minutes:00} : {_seconds:00}";
+    }
 
     private void Update()
     {
-        _timeOpen -= Time.deltaTime;
-        hours = (int)_timeOpen / transferHours;
-        minutes = (int)(_timeOpen - hours * transferHours) / transferMinutes;
-        seconds = (int)_timeOpen % transferMinutes;
+        if (_isOpenChest == false)
+        {
+            _timeOpen = 0;
+            _tMP.text = _textAllChestsOpen;
+            return;
+        }
 
-        _tMP.text = _text + $"{hours:00} : {minutes:00} : {seconds:00}";
+        _timeOpen -= Time.deltaTime;
+        _hours = (int)_timeOpen / _transferHours;
+        _minutes = (int)(_timeOpen - _hours * _transferHours) / _transferMinutes;
+        _seconds = (int)_timeOpen % _transferMinutes;
+
+        _tMP.text = _text + $"{_hours:00} : {_minutes:00} : {_seconds:00}";
     }
 }

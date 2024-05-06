@@ -7,6 +7,7 @@ public class ListOfChests : MonoBehaviour
 {
     [SerializeField] private Sprite[] _closeChests;
     [SerializeField] private Sprite[] _openChests;
+    [SerializeField] private Sprite _voidChests;
 
     public Sprite GiveCloseChest(int index)
     {
@@ -16,5 +17,10 @@ public class ListOfChests : MonoBehaviour
     public Sprite GiveOpenChest(int index)
     {
         return _openChests[index];
+    }
+
+    public Sprite GiveVoidChest()
+    {
+        return _voidChests;
     }
 }
