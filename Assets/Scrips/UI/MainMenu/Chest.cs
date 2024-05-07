@@ -17,6 +17,18 @@ public class Chest : MonoBehaviour
         return _isVoid;
     }
 
+    public void ChangeState()
+    {
+        if (_isVoid)
+        {
+            _isVoid = false;
+        }
+        else
+        {
+            _isVoid = true;
+        }
+    }
+
     private void Open()
     {
 
