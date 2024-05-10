@@ -40,7 +40,7 @@ public class ChestReward : MonoBehaviour
             indexChest = 0;
         }
 
-        _chest.sprite = _listOfChests.GiveCloseChest(indexChest);
-        PlayerChest.ChangeChest(indexChest);
+        _chest.sprite = _listOfChests.GiveCloseChest(indexChest).GetComponent<Image>().sprite;
+        PlayerChest.SetTempChest(_listOfChests.GiveCloseChest(indexChest));
     }
 }

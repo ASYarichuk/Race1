@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
     {
         if (PlayerChest.GivenChest)
         {
-            int _numberChest = PlayerChest.GiveChest();
+            //int _numberChest = PlayerChest.GiveChest();
         }
     }
 }

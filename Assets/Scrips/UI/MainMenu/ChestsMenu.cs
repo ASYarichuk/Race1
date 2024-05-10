@@ -6,66 +6,29 @@ using UnityEngine.UI;
 
 public class ChestsMenu : MonoBehaviour
 {
-    [SerializeField] private ListOfChests _listOfChests;
     [SerializeField] private List<Image> _chestsImage;
+    [SerializeField] private List<Table> _tables;
 
-    [SerializeField] private List<Sprite> _saveChests;
+    [SerializeField] private int _countChest;
 
-    private string _nameMainScene = "MainMenu";
-
-    private int _currentCount = 0;
-    private int _maxCount = 4;
-
-    private bool _isFindVoidPlace = false;
-
-    private static GameObject sampleInstance;
-
-    private void Awake()
+    private void Update()
     {
-        if (sampleInstance != null)
-            Destroy(sampleInstance);
-
-        sampleInstance = gameObject;
-        DontDestroyOnLoad(this);
+        _countChest = PlayerChest.CurrentCount;
     }
 
     private void OnEnable()
     {
-        if (SceneManager.GetActiveScene().name == _nameMainScene)
+        if(PlayerChest.TempChest != null)
         {
-            for (int i = 0; i < _chestsImage.Count; i++)
+            PlayerChest.AddChest(_tables);
+        }
+
+        for (int i = 0; i < _chestsImage.Count; i++)
+        {
+            if (PlayerChest.GiveChest(i) != null && PlayerChest.GiveChest(i).TryGetComponent(out Image image))
             {
-                _chestsImage[i].GetComponent<Image>().sprite = _saveChests[i];
+                _chestsImage[i].sprite = image.sprite;
             }
         }
-
-        if (PlayerChest.GivenChest)
-        {
-            if (_currentCount < _maxCount)
-            {
-                CheckChests(PlayerChest.GiveChest());
-                _isFindVoidPlace = false;
-                _currentCount++;
-            }
-        }
-    }
-
-    private void CheckChests(int indexChest)
-    {
-        for (int i = 0; i < _chestsImage.Count && _isFindVoidPlace == false; i++)
-        {
-            /*if (_chestsImage[i].GiveState())
-            {
-                AddChest(indexChest, i);
-                _isFindVoidPlace = true;
-                _chestsImage[i].ChangeState();
-            }*/
-        }
-    }
-
-    private void AddChest(int indexChest, int indexCurrentPlace)
-    {
-        _chestsImage[indexCurrentPlace].GetComponent<Image>().sprite = _listOfChests.GiveCloseChest(indexChest);
-        _saveChests[indexCurrentPlace] = _listOfChests.GiveCloseChest(indexChest);
     }
 }
