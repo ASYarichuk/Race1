@@ -29,7 +29,8 @@ public class CircleCounter : MonoBehaviour
 
     private void Update()
     {
-        _circleCounter.text = $"Текущий круг   {_currentCircle} / {_maxCircle} \nПройдено контрольных точек на круге   {_currentPoint} / {_maxPoint}";
+        _circleCounter.text = $"Текущий круг   {_currentCircle} / {_maxCircle} " +
+            $"\nПройдено контрольных точек на круге   {_currentPoint} / {_maxPoint}";
     }
 
     private void CheckCircle()

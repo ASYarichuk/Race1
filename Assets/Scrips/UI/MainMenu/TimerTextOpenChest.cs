@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimerTextOpenChest : MonoBehaviour
 {
     [SerializeField] private TMP_Text _tMP;
-    [SerializeField] private TimerOpenText _timerOpenText;
+    [SerializeField] private TimerOpenChest _timerOpenText;
 
     private string _text = "Время открытия сундука: ";
     private string _textAllChestsOpen = "Все сундуки открыты";

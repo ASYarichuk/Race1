@@ -10,8 +10,8 @@ public class Resurs : MonoBehaviour
     [SerializeField] private TMP_Text _cristals;
 
     private int _energyCount = 30;
-    private int _goldCount = 100;
-    private int _cristalsCount = 0;
+   // private int _goldCount = 100;
+    //private int _cristalsCount = 0;
 
     public void ReduceEnergy(int count)
     {

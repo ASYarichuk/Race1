@@ -53,4 +53,8 @@ public static class PlayerChest
         Table.ChangeState(indexCurrentPlace);
     }
 
+    public static void OpenChest()
+    {
+       // _chests.Remove(_chests[0]);
+    }
 }
