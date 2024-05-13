@@ -14,16 +14,7 @@ public class ListOfChests : MonoBehaviour
 
     public GameObject GiveCloseChest(int index)
     {
-        //_tempListForOneChest.Clear();
-
-        /*for (int i = 0; i < _closeChests.Length; i++)
-        {
-            _tempListForOneChest.Add(_closeChests[i]);
-        }*/
-
-        var newChest = Instantiate(_closeChests[index]);
-
-        return newChest;
+        return _closeChests[index];
     }
 
     public Sprite GiveOpenChest(int index)

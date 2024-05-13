@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ChestsMenu : MonoBehaviour
 {
     [SerializeField] private List<Image> _chestsImage;
-    [SerializeField] private List<Table> _tables;
 
     [SerializeField] private int _countChest;
 
@@ -18,16 +17,17 @@ public class ChestsMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if(PlayerChest.TempChest != null)
+        if (PlayerChest.TempChest != null)
         {
-            PlayerChest.AddChest(_tables);
+            PlayerChest.AddChest();
+            PlayerChest.SetTempChest(null);
         }
 
         for (int i = 0; i < _chestsImage.Count; i++)
         {
-            if (PlayerChest.GiveChest(i) != null && PlayerChest.GiveChest(i).TryGetComponent(out Image image))
+            if (PlayerChest.GiveChest(i) != null)
             {
-                _chestsImage[i].sprite = image.sprite;
+                _chestsImage[i].sprite = PlayerChest.GiveChest(i).GetComponent<Image>().sprite;
             }
         }
     }

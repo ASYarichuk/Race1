@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Table : MonoBehaviour
+public static class Table
 {
-    private bool _isVoid = true;
-
-    public bool GiveState()
+    private static bool[] _stateTable = new bool[4]
     {
-        return _isVoid;
+        true,
+        true,
+        true,
+        true
+    };
+
+    public static bool GiveState(int index)
+    {
+        return _stateTable[index];
     }
 
-    public void ChangeState()
+    public static void ChangeState(int index)
     {
-        if (_isVoid)
+        if (_stateTable[index])
         {
-            _isVoid = false;
+            _stateTable[index] = false;
         }
         else
         {
-            _isVoid = true;
+            _stateTable[index] = true;
         }
     }
 }

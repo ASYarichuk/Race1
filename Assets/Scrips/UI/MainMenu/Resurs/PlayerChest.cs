@@ -6,13 +6,7 @@ public static class PlayerChest
 {
     public static bool GivenChest { get; private set; } = false;
 
-    private static GameObject[] _chests = new GameObject[4]
-    {
-        new GameObject(),
-        new GameObject(),
-        new GameObject(),
-        new GameObject()
-    };
+    private static GameObject[] _chests = new GameObject[4];
 
     public static int CurrentCount { get; private set; } = 0;
     private static int _maxCount = 4;
@@ -31,35 +25,32 @@ public static class PlayerChest
         TempChest = chest;
     }
 
-    public static void AddChest(List<Table> tables)
+    public static void AddChest()
     {
         if (CurrentCount < _maxCount)
         {
-            CheckChests(TempChest, tables);
+            CheckTables();
             _isFindVoidPlace = false;
             CurrentCount++;
         }
     }
 
-    private static void CheckChests(GameObject chest, List<Table> tables)
+    private static void CheckTables()
     {
         for (int i = 0; i < _chests.Length && _isFindVoidPlace == false; i++)
         {
-            if (_chests[i].TryGetComponent(out Chest newChest))
+            if (Table.GiveState(i))
             {
-                if (tables[i].GiveState())
-                {
-                    AddChestInList(chest, i, tables);
-                    _isFindVoidPlace = true;
-                }
+                AddChestInList(i);
+                _isFindVoidPlace = true;
             }
         }
     }
 
-    private static void AddChestInList(GameObject chest, int indexCurrentPlace, List<Table> tables)
+    private static void AddChestInList(int indexCurrentPlace)
     {
-        _chests[indexCurrentPlace] = chest;
-        tables[indexCurrentPlace].ChangeState();
+        _chests[indexCurrentPlace] = TempChest;
+        Table.ChangeState(indexCurrentPlace);
     }
 
 }
