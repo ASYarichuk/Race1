@@ -6,7 +6,13 @@ public static class PlayerChest
 {
     public static bool GivenChest { get; private set; } = false;
 
-    private static GameObject[] _chests = new GameObject[4];
+    private static List<GameObject> _chests = new()
+    {
+        null,
+        null,
+        null,
+        null
+    };
 
     public static int CurrentCount { get; private set; } = 0;
     private static int _maxCount = 4;
@@ -37,7 +43,7 @@ public static class PlayerChest
 
     private static void CheckTables()
     {
-        for (int i = 0; i < _chests.Length && _isFindVoidPlace == false; i++)
+        for (int i = 0; i < _chests.Count && _isFindVoidPlace == false; i++)
         {
             if (Table.GiveState(i))
             {
@@ -55,6 +61,10 @@ public static class PlayerChest
 
     public static void OpenChest()
     {
-       // _chests.Remove(_chests[0]);
+        if (_chests[0] != null)
+        {
+            _chests.Remove(_chests[0]);
+            _chests.Add(null);
+        }
     }
 }

@@ -29,6 +29,7 @@ public class TimerTextOpenChest : MonoBehaviour
     private void Update()
     {
         _timeOpen = _timerOpenText.GiveTimer();
+        _isOpeningChest = _timerOpenText.IsOpenerChest();
 
         if (_isOpeningChest == false)
         {

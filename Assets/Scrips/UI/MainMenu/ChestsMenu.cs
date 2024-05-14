@@ -8,11 +8,15 @@ public class ChestsMenu : MonoBehaviour
 {
     [SerializeField] private List<Image> _chestsImage;
 
-    [SerializeField] private int _countChest;
-
     private void Update()
     {
-        _countChest = PlayerChest.CurrentCount;
+        for (int i = 0; i < _chestsImage.Count; i++)
+        {
+            if (PlayerChest.GiveChest(i) != null)
+            {
+                _chestsImage[i].sprite = PlayerChest.GiveChest(i).GetComponent<Image>().sprite;
+            }
+        }
     }
 
     private void OnEnable()
@@ -22,13 +26,10 @@ public class ChestsMenu : MonoBehaviour
             PlayerChest.AddChest();
             PlayerChest.SetTempChest(null);
         }
+    }
 
-        for (int i = 0; i < _chestsImage.Count; i++)
-        {
-            if (PlayerChest.GiveChest(i) != null)
-            {
-                _chestsImage[i].sprite = PlayerChest.GiveChest(i).GetComponent<Image>().sprite;
-            }
-        }
+    public void RemoveChest(int index)
+    {
+        _chestsImage[index].sprite = PlayerChest.GiveChest(i).GetComponent<Image>().sprite;
     }
 }

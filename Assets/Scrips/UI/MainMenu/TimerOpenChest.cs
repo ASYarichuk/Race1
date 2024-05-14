@@ -6,24 +6,35 @@ public class TimerOpenChest : MonoBehaviour
 {
     private float _timeOpen = 0;
 
+    private bool _isOpeningChest = false;
+
     private void Update()
     {
         _timeOpen -= Time.deltaTime;
 
         if (_timeOpen <= 0)
         {
-            Debug.Log(0);
+            if (_isOpeningChest)
+            {
+                PlayerChest.OpenChest();
+                _isOpeningChest = false;
+            }
+
             if (PlayerChest.GiveChest(0) != null)
             {
-                Debug.Log(1);
                 _timeOpen = PlayerChest.GiveChest(0).GetComponent<Chest>().GiveTimeOpened();
+                _isOpeningChest = true;
             }
             else
             {
-                Debug.Log(2);
                 _timeOpen = 0;
             }
-        }  
+        }
+    }
+
+    public bool IsOpenerChest()
+    {
+        return _isOpeningChest;
     }
 
     public float GiveTimer()
