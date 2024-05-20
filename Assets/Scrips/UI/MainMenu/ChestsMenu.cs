@@ -30,6 +30,6 @@ public class ChestsMenu : MonoBehaviour
 
     public void RemoveChest(int index)
     {
-        _chestsImage[index].sprite = PlayerChest.GiveChest(i).GetComponent<Image>().sprite;
+        _chestsImage[index].sprite = PlayerChest.GiveChest(index).GetComponent<Image>().sprite;
     }
 }
