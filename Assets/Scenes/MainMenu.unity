@@ -16490,7 +16490,7 @@ MonoBehaviour:
   - {fileID: 1976822960}
   - {fileID: 528578418}
   - {fileID: 1330573262}
-  _countChest: 0
+  _listOfChests: {fileID: 1877683771}
 --- !u!1 &1306889145
 GameObject:
   m_ObjectHideFlags: 0

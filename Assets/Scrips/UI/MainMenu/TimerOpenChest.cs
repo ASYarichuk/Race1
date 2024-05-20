@@ -8,6 +8,8 @@ public class TimerOpenChest : MonoBehaviour
 
     private bool _isOpeningChest = false;
 
+    private int _currentChest = 0;
+
     private void Update()
     {
         _timeOpen -= Time.deltaTime;
@@ -16,18 +18,24 @@ public class TimerOpenChest : MonoBehaviour
         {
             if (_isOpeningChest)
             {
-                PlayerChest.OpenChest();
+                PlayerChest.ChangeStateChest(_currentChest);
                 _isOpeningChest = false;
             }
 
-            if (PlayerChest.GiveChest(0) != null)
+            for (int i = 0; i < PlayerChest.MaxCount; i++)
             {
-                _timeOpen = PlayerChest.GiveChest(0).GetComponent<Chest>().GiveTimeOpened();
-                _isOpeningChest = true;
-            }
-            else
-            {
-                _timeOpen = 0;
+                if (PlayerChest.GiveChest(i) != null && PlayerChest.GiveStateChest(i) == false)
+                {
+                    _timeOpen = PlayerChest.GiveChest(i).GetComponent<Chest>().GiveTimeOpened();
+                    _isOpeningChest = true;
+                    _currentChest = i;
+                    Debug.Log(_currentChest);
+                    return;
+                }
+                else
+                {
+                    _timeOpen = 0;
+                }
             }
         }
     }

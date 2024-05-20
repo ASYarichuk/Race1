@@ -15,7 +15,7 @@ public static class PlayerChest
     };
 
     public static int CurrentCount { get; private set; } = 0;
-    private static int _maxCount = 4;
+    public static int MaxCount { get; private set; } = 4;
 
     public static GameObject TempChest { get; private set; }
 
@@ -33,7 +33,7 @@ public static class PlayerChest
 
     public static void AddChest()
     {
-        if (CurrentCount < _maxCount)
+        if (CurrentCount < MaxCount)
         {
             CheckTables();
             _isFindVoidPlace = false;
@@ -59,12 +59,28 @@ public static class PlayerChest
         Table.ChangeState(indexCurrentPlace);
     }
 
-    public static void OpenChest()
+    public static void ChangeStateChest(int index)
     {
-        if (_chests[0] != null)
+        if (_chests[index] != null)
         {
-            _chests.Remove(_chests[0]);
-            _chests.Add(null);
+            _chests[index].GetComponent<Chest>().ChangeState();
+            _chests[index].GetComponent<Chest>().IsState();
         }
+    }
+
+    public static void OpenChest(int index)
+    {
+        if (_chests[index] != null)
+        {
+            _chests.Remove(_chests[index]);
+            _chests.Add(null);
+            Table.ChangeState(index);
+            CurrentCount--;
+        }
+    }
+
+    public static bool GiveStateChest(int index)
+    {
+        return _chests[index].GetComponent<Chest>().IsState();
     }
 }
