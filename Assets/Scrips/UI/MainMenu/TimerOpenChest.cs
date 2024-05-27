@@ -11,8 +11,10 @@ public class TimerOpenChest : MonoBehaviour
     private bool _isOpeningChest = false;
 
     private int _currentChest = 0;
-    private int _maxChest = 4;
-    private int _openingChest = 0;
+    private readonly int _maxChest = 4;
+    private readonly int _openChest = 1;
+
+    private int? _openingChest = null;
 
     private const int _chestNumberOne = 0;
     private const int _chestNumberTwo = 1;
@@ -40,35 +42,67 @@ public class TimerOpenChest : MonoBehaviour
     {
         if (_timeOpen <= 0)
         {
+            if (_openingChest == _chestNumberOne)
+            {
+                PlayerPrefs.SetInt(_chestOneState, _openChest);
+                _openingChest = null;
+            }
+            else if (_openingChest == _chestNumberTwo)
+            {
+                PlayerPrefs.SetInt(_chestTwoState, _openChest);
+                _openingChest = null;
+            }
+            else if (_openingChest == _chestNumberThree)
+            {
+                PlayerPrefs.SetInt(_chestThreeState, _openChest);
+                _openingChest = null;
+            }
+            else if (_openingChest == _chestNumberFour)
+            {
+                PlayerPrefs.SetInt(_chestFourState, _openChest);
+                _openingChest = null;
+            }
+
             switch (_currentChest)
             {
                 case _chestNumberOne:
-                    if (PlayerPrefs.HasKey(_chestOne) && PlayerPrefs.HasKey(_chestOneState) == false)
+                    if (PlayerPrefs.HasKey(_chestOne) && PlayerPrefs.GetInt(_chestOneState) == 0)
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestOne)).GetComponent<Chest>().GiveTimeOpened();
+                        _openingChest = _chestNumberOne;
                         Debug.Log("Tmer - ChestOne");
                     }
+
                     break;
+
                 case _chestNumberTwo:
-                    if (PlayerPrefs.HasKey(_chestTwo) && PlayerPrefs.HasKey(_chestTwoState) == false)
+                    if (PlayerPrefs.HasKey(_chestTwo) && PlayerPrefs.GetInt(_chestTwoState) == 0)
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestTwo)).GetComponent<Chest>().GiveTimeOpened();
+                        _openingChest = _chestNumberTwo;
                         Debug.Log("Tmer - ChestTwo");
                     }
+
                     break;
+
                 case _chestNumberThree:
-                    if (PlayerPrefs.HasKey(_chestThree) && PlayerPrefs.HasKey(_chestThreeState) == false)
+                    if (PlayerPrefs.HasKey(_chestThree) && PlayerPrefs.GetInt(_chestThreeState) == 0)
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestThree)).GetComponent<Chest>().GiveTimeOpened();
+                        _openingChest = _chestNumberThree;
                         Debug.Log("Tmer - ChestThree");
                     }
+
                     break;
+
                 case _chestNumberFour:
-                    if (PlayerPrefs.HasKey(_chestFour) && PlayerPrefs.HasKey(_chestFourState) == false)
+                    if (PlayerPrefs.HasKey(_chestFour) && PlayerPrefs.GetInt(_chestFourState) == 0)
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestFour)).GetComponent<Chest>().GiveTimeOpened();
+                        _openingChest = _chestNumberFour;
                         Debug.Log("Tmer - ChestFour");
                     }
+
                     break;
             }
 
@@ -78,6 +112,11 @@ public class TimerOpenChest : MonoBehaviour
             {
                 _currentChest = 0;
             }
+        }
+
+        if (_openingChest == null)
+        {
+            _timeOpen = 0;
         }
     }
 

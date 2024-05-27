@@ -7,6 +7,7 @@ public class PlayerMover : MonoBehaviour
     private Button _gasPedal;
     private Button _forward;
     private Button _back;
+
     [SerializeField] private WheelCollider[] _wheels = new WheelCollider[4];
     [SerializeField] private float _torque = 200f;
     [SerializeField] private Rigidbody _rigidbody;
@@ -125,6 +126,7 @@ public class PlayerMover : MonoBehaviour
             {
                 _wheels[i].brakeTorque = _forceBraking;
             }
+
             return true;
         }
 

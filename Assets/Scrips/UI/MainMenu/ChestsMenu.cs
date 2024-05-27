@@ -14,30 +14,64 @@ public class ChestsMenu : MonoBehaviour
     private readonly string _chestThree = "ChestThree";
     private readonly string _chestFour = "ChestFour";
 
-    private void OnEnable()
+    private readonly string _chestOneState = "ChestOneState";
+    private readonly string _chestTwoState = "ChestTwoState";
+    private readonly string _chestThreeState = "ChestThreeState";
+    private readonly string _chestFourState = "ChestFourState";
+
+    private void Update()
+    {
+        SetSprite();
+    }
+
+    private void SetSprite()
     {
         if (PlayerPrefs.HasKey(_chestOne))
         {
-            _chestsImage[0].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestOne)).GetComponent<Image>().sprite;
-            Debug.Log("ChestOne");
+            if (PlayerPrefs.GetInt(_chestOneState) == 0)
+            {
+                _chestsImage[0].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestOne)).GetComponent<Image>().sprite;
+            }
+            else
+            {
+                _chestsImage[0].sprite = _listOfChests.GiveOpenChest(PlayerPrefs.GetInt(_chestOne));
+            }
         }
 
         if (PlayerPrefs.HasKey(_chestTwo))
         {
-            _chestsImage[1].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestTwo)).GetComponent<Image>().sprite;
-            Debug.Log("ChestTwo");
+            if (PlayerPrefs.GetInt(_chestTwoState) == 0)
+            {
+                _chestsImage[1].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestTwo)).GetComponent<Image>().sprite;
+            }
+            else
+            {
+                _chestsImage[1].sprite = _listOfChests.GiveOpenChest(PlayerPrefs.GetInt(_chestTwo));
+            }
         }
-        
+
         if (PlayerPrefs.HasKey(_chestThree))
         {
-            _chestsImage[2].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestThree)).GetComponent<Image>().sprite;
-            Debug.Log("ChestThree");
+            if (PlayerPrefs.GetInt(_chestThreeState) == 0)
+            {
+                _chestsImage[2].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestThree)).GetComponent<Image>().sprite;
+            }
+            else
+            {
+                _chestsImage[2].sprite = _listOfChests.GiveOpenChest(PlayerPrefs.GetInt(_chestThree));
+            }
         }
-        
+
         if (PlayerPrefs.HasKey(_chestFour))
         {
-            _chestsImage[3].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestFour)).GetComponent<Image>().sprite;
-            Debug.Log("ChestFour");
+            if (PlayerPrefs.GetInt(_chestFourState) == 0)
+            {
+                _chestsImage[3].sprite = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestFour)).GetComponent<Image>().sprite;
+            }
+            else
+            {
+                _chestsImage[3].sprite = _listOfChests.GiveOpenChest(PlayerPrefs.GetInt(_chestFour));
+            }
         }
     }
 }

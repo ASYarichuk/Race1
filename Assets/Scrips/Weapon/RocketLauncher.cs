@@ -6,7 +6,7 @@ public class RocketLauncher : Weapon
 {
     [SerializeField] private Button _rocketLauncher;
 
-    [SerializeField] private float _currentTimeCooldown;
+    private float _currentTimeCooldown;
 
     private PlayerButton _buttons;
 

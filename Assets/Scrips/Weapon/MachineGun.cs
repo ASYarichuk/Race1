@@ -6,7 +6,7 @@ public class MachineGun : Weapon
 {
     [SerializeField] private Button _machineGun;
 
-    [SerializeField] private float _currentTimeCooldown;
+    private float _currentTimeCooldown;
 
     private PlayerButton _buttons;
 

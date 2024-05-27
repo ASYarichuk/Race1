@@ -34,7 +34,6 @@ public class AIMover : MonoBehaviour
     private int _forceBraking = 5000;
 
     private float _currentAngle;
-    [SerializeField] private float _mass;
 
     private void FixedUpdate()
     {
@@ -42,7 +41,6 @@ public class AIMover : MonoBehaviour
         CheckAngle();
         MoveDown();
         _speed = _rigidbody.velocity.magnitude * _coefficientKPHInMPH;
-        _mass = _rigidbody.mass;
     }
 
     private void Move()
