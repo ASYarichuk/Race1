@@ -9,11 +9,5 @@ public class MainMenu : MonoBehaviour
 
     private int _numberChest;
 
-    private void OnEnable()
-    {
-        if (PlayerChest.GivenChest)
-        {
-            //int _numberChest = PlayerChest.GiveChest();
-        }
-    }
+
 }

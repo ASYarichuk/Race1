@@ -29,14 +29,6 @@ public class TimerTextOpenChest : MonoBehaviour
     private void Update()
     {
         _timeOpen = _timerOpenText.GiveTimer();
-        _isOpeningChest = _timerOpenText.IsOpenerChest();
-
-        if (_isOpeningChest == false)
-        {
-            _timeOpen = 0;
-            _tMP.text = _textAllChestsOpen;
-            return;
-        }
 
         _hours = (int)_timeOpen / _transferHours;
         _minutes = (int)(_timeOpen - _hours * _transferHours) / _transferMinutes;

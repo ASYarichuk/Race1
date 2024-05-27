@@ -23,7 +23,7 @@ public class ChestReward : MonoBehaviour
         {
             indexChest = 4;
         }
-        else if (percent < _percentChestFour )
+        else if (percent < _percentChestFour)
         {
             indexChest = 3;
         }
@@ -41,8 +41,35 @@ public class ChestReward : MonoBehaviour
         }
 
         GameObject tempChest = _listOfChests.GiveCloseChest(indexChest);
-
         _chest.sprite = tempChest.GetComponent<Image>().sprite;
-        PlayerChest.SetTempChest(tempChest);
+
+        if (PlayerPrefs.HasKey("ChestOne") == false)
+        {
+            PlayerPrefs.SetInt("ChestOne", indexChest);
+            PlayerPrefs.SetInt("ChestOneState", 0);
+            Debug.Log("ChestOne");
+        }
+        else if (PlayerPrefs.HasKey("ChestTwo") == false)
+        {
+            PlayerPrefs.SetInt("ChestTwo", indexChest);
+            PlayerPrefs.SetInt("ChestTwoState", 0);
+            Debug.Log("ChestTwo");
+        }
+        else if (PlayerPrefs.HasKey("ChestThree") == false)
+        {
+            PlayerPrefs.SetInt("ChestThree", indexChest);
+            PlayerPrefs.SetInt("ChestThreeState", 0);
+            Debug.Log("ChestThree");
+        }
+        else if (PlayerPrefs.HasKey("ChestFour") == false)
+        {
+            PlayerPrefs.SetInt("ChestFour", indexChest);
+            PlayerPrefs.SetInt("ChestFourState", 0);
+            Debug.Log("ChestFour");
+        }
+        else
+        {
+            Debug.Log("Заполнено");
+        }
     }
 }
