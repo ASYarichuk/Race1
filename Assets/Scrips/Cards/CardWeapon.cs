@@ -7,10 +7,12 @@ public class CardWeapon : Card
     private readonly float _cooldown;
     private float _damage;
 
-    public CardWeapon(float damage, float cooldown)
+    public CardWeapon(float damage, float cooldown, int countStar, bool isIncreaseMaxLevel)
     {
         _damage = damage;
         _cooldown = cooldown;
+        SetMaxLevel(countStar);
+        SetIncreaseMaxLevel(isIncreaseMaxLevel);
     }
 
     public void SetDamage(float damage)

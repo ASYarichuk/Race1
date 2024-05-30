@@ -11,17 +11,26 @@ public class CardsMenu : MonoBehaviour
     [SerializeField] private Slider[] _weaponsSlider;
     [SerializeField] private TMP_Text[] _weaponsTextSlider;
 
-    [SerializeField] private GameObject[] _cars = new GameObject[8];
+    [SerializeField] private GameObject[] _carsLevelFull;
+    [SerializeField] private TMP_Text[] _carsTextLevel;
+    [SerializeField] private Slider[] _carsSlider;
+    [SerializeField] private TMP_Text[] _carsTextSlider;
+    [SerializeField] private ActivatorStars[] _carsStars;
 
     private void Update()
     {
         for (int i = 0; i < _weaponsLevelFull.Length; i++)
         {
-            FillCards(i);
+            FillCardsWeapon(i);
+        }
+
+        for (int i = 0; i < _carsLevelFull.Length; i++)
+        {
+            FillCardsCar(i);
         }
     }
 
-    private void FillCards(int index)
+    private void FillCardsWeapon(int index)
     {
         if (ListOfCardsWeapon.GiveStatusMaxLevel(index))
         {
@@ -39,5 +48,30 @@ public class CardsMenu : MonoBehaviour
         }
 
         _weaponsTextLevel[index].text = $"{ListOfCardsWeapon.GiveLevelCard(index)}";
+    }
+
+    private void FillCardsCar(int index)
+    {
+        if (ListOfCardsCar.GiveStatusMaxLevel(index))
+        {
+            _carsLevelFull[index].SetActive(true);
+            _carsTextSlider[index].text = $"MAX!";
+            _carsSlider[index].value = 1;
+            _carsSlider[index].maxValue = 1;
+        }
+        else
+        {
+            _carsLevelFull[index].SetActive(false);
+            _carsTextSlider[index].text = $"{ListOfCardsCar.GiveCurrentCount(index)}/{ListOfCardsCar.GiveMaxCount(index)}";
+            _carsSlider[index].value = ListOfCardsCar.GiveCurrentCount(index);
+            _carsSlider[index].maxValue = ListOfCardsCar.GiveMaxCount(index);
+        }
+
+        _carsTextLevel[index].text = $"{ListOfCardsCar.GiveLevelCard(index)}";
+
+        for (int i = 0; i < ListOfCardsCar.GiveCurrentStars(index); i++)
+        {
+            _carsStars[index].Activate(i);
+        }
     }
 }

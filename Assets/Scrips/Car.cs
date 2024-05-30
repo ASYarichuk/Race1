@@ -5,17 +5,17 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     [SerializeField] private float _health;
-    [SerializeField] private int _armor;
+    [SerializeField] private float _armor;
 
     private float _damageMultiplier;
     private float _currentDamage;
 
     public void TakeDamage(int damage)
     {
-        //_damageMultiplier = damage / (damage + _armor);
+        _damageMultiplier = (100 - _armor) / 100;
         _currentDamage = damage * _damageMultiplier;
 
-        _health -= damage;//_currentDamage;
+        _health -= _currentDamage;
 
         if (_health <= 0)
         {
