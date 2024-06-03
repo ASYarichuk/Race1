@@ -9,6 +9,9 @@ public class ActivatorStars : MonoBehaviour
 
     public void Activate(int index)
     {
-        _stars[index].SetActive(true);
+        for (int i = 0; i < index; i++)
+        {
+            _stars[i].SetActive(true);
+        }
     }
 }

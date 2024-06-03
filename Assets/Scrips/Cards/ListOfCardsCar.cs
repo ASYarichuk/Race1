@@ -4,11 +4,11 @@ using UnityEngine;
 
 public static class ListOfCardsCar
 {
-    private static float _valueConverToPercentage = 1;
-    private static float _valueCorrectDisplayLevel = 1;
-    private static float _rationIncrease = 0.1f;
+    private readonly static float _valueConverToPercentage = 1;
+    private readonly static float _valueCorrectDisplayLevel = 1;
+    private readonly static float _rationIncrease = 0.1f;
 
-    private static CardCar[] _cards = new CardCar[8]
+    private readonly static CardCar[] _cards = new CardCar[8]
     {
         new CardCar(200,10,450,90, true),
         new CardCar(250,15,420,85, true),

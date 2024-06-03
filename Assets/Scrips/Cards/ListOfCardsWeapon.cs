@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System;
 
 public static class ListOfCardsWeapon
 {
-    private static float _valueConverToPercentage = 1;
-    private static float _valueCorrectDisplayLevel = 1;
-    private static float _rationIncreaseDamage = 0.1f;
+    private readonly static float _valueConverToPercentage = 1;
+    private readonly static float _valueCorrectDisplayLevel = 1;
+    private readonly static float _rationIncreaseDamage = 0.1f;
 
-    private static CardWeapon[] _cards = new CardWeapon[21]
+    private readonly static CardWeapon[] _cards = new CardWeapon[21]
     {
         new CardWeapon(1,1,1,false),
         new CardWeapon(1.5f,1,2,false),

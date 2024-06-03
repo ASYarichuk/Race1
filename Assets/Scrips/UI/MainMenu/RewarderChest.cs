@@ -15,25 +15,78 @@ public class RewarderChest : MonoBehaviour
     [SerializeField] private ActivatorStars[] _stars;
 
     [SerializeField] private ListCardForReward _listCardForReward;
+    [SerializeField] private Image _gold;
 
-    private void OnEnable()
+    private bool _isCard = true;
+
+    private readonly int _maxCountStar = 1;
+
+    public void SetReward(int[] countStar, int[] countCard)
     {
         for (int i = 0; i < _textsName.Length; i++)
         {
-            FillCardReward(i);
+            FillCardReward(i, countStar[i], countCard[i]);
         }
     }
 
-    private void FillCardReward(int indexPlaceReward)
+    private void FillCardReward(int indexPlaceReward, int countStar, int countCard) 
     {
-        int index = Random.Range(0, _listCardForReward.GiveCountCards());
+        CardsForReward cardsForReward = null;
 
-        int numberCurrentCard = _listCardForReward.GiveCard(index);
+        for (int i = 0; i < _maxCountStar; i++)
+        {
+            cardsForReward = _listCardForReward.GivePackOfCards(countStar);
 
-        _levelsFull[indexPlaceReward].SetActive(false);
-        _textsSlider[indexPlaceReward].text = $"{ListOfCardsWeapon.GiveCurrentCount(index)}/{ListOfCardsWeapon.GiveMaxCount(index)}";
-        _sliders[indexPlaceReward].value = ListOfCardsWeapon.GiveCurrentCount(index);
-        _sliders[indexPlaceReward].maxValue = ListOfCardsWeapon.GiveMaxCount(index);
+            if (cardsForReward.GiveCountCards() == 0 && countStar != 0)
+            {
+                countStar++;
+            }
+
+            if (countStar > _maxCountStar)
+            {
+                countStar = _maxCountStar;
+                _isCard = false;
+            }
+        }
+
+        if (_isCard)
+        {
+            int index = Random.Range(0, cardsForReward.GiveCountCards());
+
+            int numberCurrentCard = cardsForReward.GiveSerialNumber(index);
+
+            _levelsFull[indexPlaceReward].SetActive(false);
+
+            _textsName[indexPlaceReward].text = cardsForReward.GiveCardName(index);
+            _images[indexPlaceReward].sprite = cardsForReward.GiveImage(index);
+            _stars[indexPlaceReward].Activate(cardsForReward.GiveCountStar(index));
+
+            if (countStar == 0)
+            {
+                FillCar(indexPlaceReward, numberCurrentCard, countCard);
+            }
+            else
+            {
+                FillWeapon(indexPlaceReward, numberCurrentCard, countCard, cardsForReward);
+            }
+        }
+        else
+        {
+            _images[indexPlaceReward].sprite = _gold.sprite;
+            _textsName[indexPlaceReward].text = "200";
+            _sliders[indexPlaceReward].gameObject.SetActive(false);
+            _stars[indexPlaceReward].gameObject.SetActive(false);
+        }
+    }
+
+    private void FillWeapon(int indexPlaceReward, int numberCurrentCard, int countCard, CardsForReward cardsForReward)
+    {
+        ListOfCardsWeapon.AddCard(numberCurrentCard, countCard);
+
+        _textsSlider[indexPlaceReward].text = $"{ListOfCardsWeapon.GiveCurrentCount(numberCurrentCard)}/{ListOfCardsWeapon.GiveMaxCount(numberCurrentCard)}";
+        _sliders[indexPlaceReward].value = ListOfCardsWeapon.GiveCurrentCount(numberCurrentCard);
+        _sliders[indexPlaceReward].maxValue = ListOfCardsWeapon.GiveMaxCount(numberCurrentCard);
+        _textsLevel[indexPlaceReward].text = $"{ListOfCardsWeapon.GiveLevelCard(numberCurrentCard)}";
 
         if (ListOfCardsWeapon.GiveStatusMaxLevel(numberCurrentCard))
         {
@@ -41,11 +94,25 @@ public class RewarderChest : MonoBehaviour
             _textsSlider[indexPlaceReward].text = $"MAX!";
             _sliders[indexPlaceReward].value = 1;
             _sliders[indexPlaceReward].maxValue = 1;
+            cardsForReward.DeleteCard(numberCurrentCard);
         }
+    }
+    
+    private void FillCar(int indexPlaceReward, int numberCurrentCard, int countCard)
+    {
+        ListOfCardsCar.AddCard(numberCurrentCard, countCard);
 
-        _textsLevel[indexPlaceReward].text = $"{ListOfCardsWeapon.GiveLevelCard(index)}";
-        _textsName[indexPlaceReward].text = _listCardForReward.GiveCardName(index);
-        _images[indexPlaceReward].sprite = _listCardForReward.GiveImage(index);
-        _stars[indexPlaceReward].Activate(_listCardForReward.GiveCountStar());
+        _textsSlider[indexPlaceReward].text = $"{ListOfCardsCar.GiveCurrentCount(numberCurrentCard)}/{ListOfCardsCar.GiveMaxCount(numberCurrentCard)}";
+        _sliders[indexPlaceReward].value = ListOfCardsCar.GiveCurrentCount(numberCurrentCard);
+        _sliders[indexPlaceReward].maxValue = ListOfCardsCar.GiveMaxCount(numberCurrentCard);
+        _textsLevel[indexPlaceReward].text = $"{ListOfCardsCar.GiveLevelCard(numberCurrentCard)}";
+
+        if (ListOfCardsCar.GiveStatusMaxLevel(numberCurrentCard))
+        {
+            _levelsFull[indexPlaceReward].SetActive(true);
+            _textsSlider[indexPlaceReward].text = $"MAX!";
+            _sliders[indexPlaceReward].value = 1;
+            _sliders[indexPlaceReward].maxValue = 1;
+        }
     }
 }

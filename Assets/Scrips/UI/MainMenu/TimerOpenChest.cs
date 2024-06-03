@@ -70,7 +70,6 @@ public class TimerOpenChest : MonoBehaviour
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestOne)).GetComponent<Chest>().GiveTimeOpened();
                         _openingChest = _chestNumberOne;
-                        Debug.Log("Tmer - ChestOne");
                     }
 
                     break;
@@ -80,7 +79,6 @@ public class TimerOpenChest : MonoBehaviour
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestTwo)).GetComponent<Chest>().GiveTimeOpened();
                         _openingChest = _chestNumberTwo;
-                        Debug.Log("Tmer - ChestTwo");
                     }
 
                     break;
@@ -90,7 +88,6 @@ public class TimerOpenChest : MonoBehaviour
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestThree)).GetComponent<Chest>().GiveTimeOpened();
                         _openingChest = _chestNumberThree;
-                        Debug.Log("Tmer - ChestThree");
                     }
 
                     break;
@@ -100,7 +97,6 @@ public class TimerOpenChest : MonoBehaviour
                     {
                         _timeOpen = _listOfChests.GiveCloseChest(PlayerPrefs.GetInt(_chestFour)).GetComponent<Chest>().GiveTimeOpened();
                         _openingChest = _chestNumberFour;
-                        Debug.Log("Tmer - ChestFour");
                     }
 
                     break;

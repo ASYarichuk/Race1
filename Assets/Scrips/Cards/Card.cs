@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Card
 {
-    private readonly List<int> _cardForLevelUp = new List<int>
+    private readonly List<int> _cardForLevelUp = new()
     {
         5,
         10,
@@ -28,7 +29,10 @@ public class Card
         1300,
         1500,
         1750,
-        2000
+        2000,
+        3000,
+        4000,
+        5000
     };
 
     private int _currentLevel = 1;
@@ -58,17 +62,13 @@ public class Card
 
                     i = 0;
 
-                    if (_currentStar == _maxStar)
+                    if (_currentStar >= _maxStar)
                     {
                         _isIncreaseMaxStar = false;
                     }
 
                     continue;
                 }
-                else
-                {
-                    break;
-                } 
             }
 
             if (_currentCount >= _cardForLevelUp[_currentLevel - 1])

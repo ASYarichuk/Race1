@@ -68,10 +68,6 @@ public class CardsMenu : MonoBehaviour
         }
 
         _carsTextLevel[index].text = $"{ListOfCardsCar.GiveLevelCard(index)}";
-
-        for (int i = 0; i < ListOfCardsCar.GiveCurrentStars(index); i++)
-        {
-            _carsStars[index].Activate(i);
-        }
+        _carsStars[index].Activate(ListOfCardsCar.GiveCurrentStars(index));
     }
 }
