@@ -9,6 +9,6 @@ public class ButtonAddCountCard : MonoBehaviour
 
     public void OnClickButton()
     {
-        ListOfCardsWeapon.AddCard(_card, _count);
+        ListOfCardsCar.AddCard(_card, _count);
     }
 }

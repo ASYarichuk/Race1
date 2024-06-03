@@ -8,11 +8,11 @@ public class ChestReward : MonoBehaviour
     [SerializeField] private ListOfChests _listOfChests;
     [SerializeField] private Image _chest;
 
-    private int _maxPercent = 100;
-    private int _percentChestTwo = 41;
-    private int _percentChestThree = 16;
-    private int _percentChestFour = 6;
-    private int _percentChestFive = 1;
+    private readonly int _maxPercent = 100;
+    private readonly int _percentChestTwo = 51;
+    private readonly int _percentChestThree = 26;
+    private readonly int _percentChestFour = 11;
+    private readonly int _percentChestFive = 3;
     private int indexChest = 0;
 
     private void OnEnable()

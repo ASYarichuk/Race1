@@ -19,7 +19,7 @@ public class RewarderChest : MonoBehaviour
 
     private bool _isCard = true;
 
-    private readonly int _maxCountStar = 1;
+    private readonly int _maxCountStar = 5;
 
     public void SetReward(int[] countStar, int[] countCard)
     {
@@ -51,6 +51,10 @@ public class RewarderChest : MonoBehaviour
 
         if (_isCard)
         {
+            _sliders[indexPlaceReward].gameObject.SetActive(true);
+            _stars[indexPlaceReward].gameObject.SetActive(true);
+            _stars[indexPlaceReward].Deactivate();
+
             int index = Random.Range(0, cardsForReward.GiveCountCards());
 
             int numberCurrentCard = cardsForReward.GiveSerialNumber(index);
@@ -76,6 +80,7 @@ public class RewarderChest : MonoBehaviour
             _textsName[indexPlaceReward].text = "200";
             _sliders[indexPlaceReward].gameObject.SetActive(false);
             _stars[indexPlaceReward].gameObject.SetActive(false);
+            _isCard = true;
         }
     }
 

@@ -12,7 +12,7 @@ public class EndGame : MonoBehaviour
     private int _experience = 0;
     private int _gold = 0;
 
-    private static List<int> _experiencePlace = new List<int>
+    private static readonly List<int> _experiencePlace = new()
     {
         5,
         10,
@@ -20,7 +20,7 @@ public class EndGame : MonoBehaviour
         50
     };
 
-    private static List<int> _goldPlace = new List<int>
+    private static readonly List<int> _goldPlace = new()
     {
         500,
         1000,

@@ -52,6 +52,11 @@ public static class ListOfCardsCar
         return _cards[numberCard].GiveCurrentStars();
     }
 
+    public static float[] GiveParameters(int numberCard)
+    {
+        return _cards[numberCard].GiveParameters();
+    }
+
     private static void SetParameters(int numberCard)
     {
         float[] parameters = _cards[numberCard].GiveParameters();
