@@ -77,20 +77,21 @@ public static class ListOfCardsCar
                 if (currentLevel < 1)
                 {
                     currentLevel = _cards[numberCard].GiveMaxCount() - levelPerStar;
+                    currentStar--;
                 }
             }
 
             float[] parameters = _cards[numberCard].GiveParameters();
 
-            if (currentStar == 5)
-            {
-                _rationIncreaseSpeed = _rationIncreaseSpeedForFiveStar;
-                _rationIncreaseArmor = _rationIncreaseArmorForFiveStar;
-            }
-            else
+            if (currentStar < 5)
             {
                 _rationIncreaseSpeed = _startRationIncreaseSpeed;
                 _rationIncreaseArmor = _startRationIncreaseArmor;
+            }
+            else
+            {
+                _rationIncreaseSpeed = _rationIncreaseSpeedForFiveStar;
+                _rationIncreaseArmor = _rationIncreaseArmorForFiveStar;
             }
 
             parameters[0] = parameters[0] * (_valueConverToPercentage + _rationIncreaseSpeed * currentStar *
