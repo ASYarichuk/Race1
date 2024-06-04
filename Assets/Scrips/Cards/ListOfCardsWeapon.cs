@@ -4,7 +4,7 @@ public static class ListOfCardsWeapon
 {
     private readonly static float _valueConverToPercentage = 1;
     private readonly static float _valueCorrectDisplayLevel = 1;
-    private readonly static float _rationIncreaseDamage = 0.1f;
+    private readonly static float _rationIncreaseDamage = 0.01f;
 
     private readonly static CardWeapon[] _cards = new CardWeapon[21]
     {
@@ -37,15 +37,32 @@ public static class ListOfCardsWeapon
 
     public static void AddCard(int numberCard, int count)
     {
-        _cards[numberCard].AddCount(count);
+        int countLevelUp = _cards[numberCard].AddCount(count);
 
-        _cards[numberCard].SetDamage(_cards[numberCard].GiveDamage() * _cards[numberCard].GiveCurrentStars() *
-            (_valueConverToPercentage + _rationIncreaseDamage *
-            (float)(_cards[numberCard].GiveCurrentLevel() - _valueCorrectDisplayLevel)));
+        int currentLevel = _cards[numberCard].GiveCurrentLevel();
+        int currentStar = _cards[numberCard].GiveCurrentStars();
+        int levelPerStar = 5;
 
-        if (_cards[numberCard].GiveStateOpen() == false)
+        for (int i = 0; i < countLevelUp; i++)
         {
-            _cards[numberCard].ChangeStateOpen();
+            if (i > 0)
+            {
+                currentLevel--;
+
+                if (currentLevel < 1)
+                {
+                    currentLevel = _cards[numberCard].GiveMaxCount() - levelPerStar;
+                }
+            }
+
+            _cards[numberCard].SetDamage(_cards[numberCard].GiveDamage() * currentStar *
+            (_valueConverToPercentage + _rationIncreaseDamage *
+            (float)(currentLevel - _valueCorrectDisplayLevel)));
+
+            if (_cards[numberCard].GiveStateOpen() == false)
+            {
+                _cards[numberCard].ChangeStateOpen();
+            }
         }
     }
 
@@ -53,7 +70,7 @@ public static class ListOfCardsWeapon
     {
         return _cards[numberCard].GiveDamage();
     }
-    
+
     public static float GiveCooldown(int numberCard)
     {
         return _cards[numberCard].GiveCooldown();

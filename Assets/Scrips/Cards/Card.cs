@@ -45,8 +45,10 @@ public class Card
     private bool _isMaxLevel = false;
     private bool _isIncreaseMaxStar = false;
 
-    public void AddCount(int count)
+    public int AddCount(int count)
     {
+        int countLevelUp = 0;
+
         _currentCount += count;
 
         for (int i = 0; i < _cardForLevelUp.Count; i++)
@@ -75,8 +77,11 @@ public class Card
             {
                 _currentCount -= _cardForLevelUp[_currentLevel - 1];
                 AddLevel();
+                countLevelUp++;
             }
         }
+
+        return countLevelUp;
     }
 
     public int GiveCurrentLevel()
