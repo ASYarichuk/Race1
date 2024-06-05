@@ -69,6 +69,7 @@ public class Card
                         _isIncreaseMaxStar = false;
                     }
 
+                    countLevelUp++;
                     continue;
                 }
             }

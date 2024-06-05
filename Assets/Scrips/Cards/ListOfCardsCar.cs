@@ -63,22 +63,21 @@ public static class ListOfCardsCar
     }
 
     private static void SetParameters(int numberCard, int countLevelUp)
-    {
-        int currentLevel = _cards[numberCard].GiveCurrentLevel();
-        float currentStar = _cards[numberCard].GiveCurrentStars();
+    {     
         int levelPerStar = 5;
 
-        for (int i = 0; i < countLevelUp; i++)
+        for (int i = countLevelUp; i > 0; i--)
         {
-            if (i > 0)
-            {
-                currentLevel--;
+            float currentStar = _cards[numberCard].GiveCurrentStars();
+            float currentLevel = _cards[numberCard].GiveCurrentLevel();
 
-                if (currentLevel < 1)
-                {
-                    currentLevel = _cards[numberCard].GiveMaxCount() - levelPerStar;
-                    currentStar--;
-                }
+            currentLevel -= countLevelUp;
+            countLevelUp--;
+
+            if (currentLevel < 1)
+            {
+                currentLevel += _cards[numberCard].GiveCurrentStars() * levelPerStar - levelPerStar; 
+                currentStar--;
             }
 
             float[] parameters = _cards[numberCard].GiveParameters();
@@ -95,10 +94,10 @@ public static class ListOfCardsCar
             }
 
             parameters[0] = parameters[0] * (_valueConverToPercentage + _rationIncreaseSpeed * currentStar *
-                            (float)(currentLevel * _valueCorrectDisplayLevel));
+                           (currentLevel * _valueCorrectDisplayLevel));
 
             parameters[1] = parameters[1] + _rationIncreaseArmor * currentStar *
-                            (float)(currentLevel * _valueCorrectDisplayLevel);
+                            (currentLevel * _valueCorrectDisplayLevel);
 
             _cards[numberCard].SetParameters(parameters);
         }
