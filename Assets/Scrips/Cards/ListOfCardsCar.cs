@@ -6,12 +6,16 @@ public static class ListOfCardsCar
 {
     private readonly static float _valueConverToPercentage = 1;
     private readonly static float _valueCorrectDisplayLevel = 1;
-    private static float _rationIncreaseSpeed = 0.1f;
-    private static float _rationIncreaseArmor = 0.5f;
-    private readonly static float _startRationIncreaseSpeed = 0.3f;
-    private readonly static float _startRationIncreaseArmor = 0.5f;
-    private readonly static float _rationIncreaseSpeedForFiveStar = 0.005f;
-    private readonly static float _rationIncreaseArmorForFiveStar = 0.8f;
+    private static float _rationIncreaseSpeed = 0.01f;
+    private static float _rationIncreaseArmor = 0.05f;
+    private readonly static float _startRationIncreaseSpeed = 0.01f;
+    private readonly static float _startRationIncreaseArmor = 0.05f;
+    private readonly static float _rationIncreaseSpeedForFiveStar = 0.00085f;
+    private readonly static float _rationIncreaseSpeedForFourStar = 0.001f;
+    private readonly static float _rationIncreaseSpeedForThreeStar = 0.003f;
+    private readonly static float _rationIncreaseArmorForFiveStar = 0.005f;
+    private readonly static float _rationIncreaseArmorForFourStar = 0.01f;
+    private readonly static float _rationIncreaseArmorForThreeStar = 0.02f;
 
     private readonly static CardCar[] _cards = new CardCar[8]
     {
@@ -82,15 +86,25 @@ public static class ListOfCardsCar
 
             float[] parameters = _cards[numberCard].GiveParameters();
 
-            if (currentStar < 5)
-            {
-                _rationIncreaseSpeed = _startRationIncreaseSpeed;
-                _rationIncreaseArmor = _startRationIncreaseArmor;
-            }
-            else
+            if (currentStar == 5)
             {
                 _rationIncreaseSpeed = _rationIncreaseSpeedForFiveStar;
                 _rationIncreaseArmor = _rationIncreaseArmorForFiveStar;
+            }
+            else if (currentStar == 4)
+            {
+                _rationIncreaseSpeed = _rationIncreaseSpeedForFourStar;
+                _rationIncreaseArmor = _rationIncreaseArmorForFourStar;
+            }
+            else if (currentStar == 3)
+            {
+                _rationIncreaseSpeed = _rationIncreaseSpeedForThreeStar;
+                _rationIncreaseArmor = _rationIncreaseArmorForThreeStar;
+            }
+            else
+            {
+                _rationIncreaseSpeed = _startRationIncreaseSpeed;
+                _rationIncreaseArmor = _startRationIncreaseArmor;
             }
 
             parameters[0] = parameters[0] * (_valueConverToPercentage + _rationIncreaseSpeed * currentStar *
