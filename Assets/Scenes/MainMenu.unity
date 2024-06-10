@@ -16051,7 +16051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indexButton: 2
   _selectionMenu: {fileID: 1781654532}
-  _imageCurrentWeapon: {fileID: 1685218085}
+  _currentImage: {fileID: 1685218085}
   _images:
   - {fileID: 1663231913}
   - {fileID: 508583139}
@@ -35072,7 +35072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indexButton: 0
   _selectionMenu: {fileID: 1781654532}
-  _imageCurrentWeapon: {fileID: 455826157}
+  _currentImage: {fileID: 455826157}
   _images:
   - {fileID: 1663231913}
   - {fileID: 508583139}
@@ -45013,7 +45013,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indexButton: 1
   _selectionMenu: {fileID: 1781654532}
-  _imageCurrentWeapon: {fileID: 519638491}
+  _currentImage: {fileID: 519638491}
   _images:
   - {fileID: 1663231913}
   - {fileID: 508583139}
@@ -53889,7 +53889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _indexButton: 3
   _selectionMenu: {fileID: 1781654532}
-  _imageCurrentWeapon: {fileID: 1783150550}
+  _currentImage: {fileID: 1783150550}
   _images:
   - {fileID: 1663231913}
   - {fileID: 508583139}

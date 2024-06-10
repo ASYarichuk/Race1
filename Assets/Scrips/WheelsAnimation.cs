@@ -10,14 +10,10 @@ public class WheelsAnimation : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 wheelPosition = Vector3.zero;
-        Quaternion wheelRotation = Quaternion.identity;
-
         for (int i = 0; i < _wheels.Length; i++)
         {
-            _wheelsCollider[i].GetWorldPose(out wheelPosition, out wheelRotation);
-            _wheels[i].transform.position = wheelPosition;
-            _wheels[i].transform.rotation = wheelRotation;
+            _wheelsCollider[i].GetWorldPose(out Vector3 wheelPosition, out Quaternion wheelRotation);
+            _wheels[i].transform.SetPositionAndRotation(wheelPosition, wheelRotation);
         }
     }
 }

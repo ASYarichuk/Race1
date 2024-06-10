@@ -7,7 +7,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private ListOfChests _listOfChests;
     [SerializeField] private ChestsMenu _chestsMenu;
 
-    private int _numberChest;
+    private void Awake()
+    {
+        Debug.Log("Для чего этот скрипт?");
+    }
 
 
 }

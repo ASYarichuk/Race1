@@ -21,17 +21,15 @@ public class AIMover : MonoBehaviour
 
     [SerializeField] private AIWheelsRotator _aIWheelsRotator;
 
-    private float _ratioMinSpeed = 2.5f;
+    private readonly float _ratioMinSpeed = 2.5f;
     private float _timer = 0;
-    private float _timeBeforeDownMove = 0.5f;
+    private readonly float _timeBeforeDownMove = 0.5f;
 
     private RaycastHit hit = new();
 
-    private static float _coefficientKPHInMPH = 3.6f;
+    private readonly static float _coefficientKPHInMPH = 3.6f;
 
-    private float[] _slip = new float[4];
-
-    private int _forceBraking = 5000;
+    private readonly int _forceBraking = 5000;
 
     private float _currentAngle;
 
@@ -82,6 +80,7 @@ public class AIMover : MonoBehaviour
         }
     }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "UNT0024:Give priority to scalar calculations over vector calculations", Justification = "<ќжидание>")]
     private void MoveDown()
     {
         if (_speed < _minSpeedDownMove)

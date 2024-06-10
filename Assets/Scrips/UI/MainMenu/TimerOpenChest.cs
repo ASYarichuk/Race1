@@ -8,7 +8,7 @@ public class TimerOpenChest : MonoBehaviour
 
     private float _timeOpen = 0;
 
-    private bool _isOpeningChest = false;
+    private readonly bool _isOpeningChest = false;
 
     private int _currentChest = 0;
     private readonly int _maxChest = 4;

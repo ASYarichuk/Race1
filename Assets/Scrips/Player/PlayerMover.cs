@@ -22,15 +22,15 @@ public class PlayerMover : MonoBehaviour
 
     private PlayerButton _buttons;
 
-    private static float _coefficientKPHInMPH = 3.6f;
+    private readonly static float _coefficientKPHInMPH = 3.6f;
 
     private bool _movingForward = true;
 
-    private float[] _slip = new float[4];
+    private readonly float[] _slip = new float[4];
 
-    private int _forceBraking = 5000;
+    private readonly int _forceBraking = 5000;
 
-    private float _ratioMinSpeed = 8f;
+    private readonly float _ratioMinSpeed = 8f;
 
     private void Awake()
     {

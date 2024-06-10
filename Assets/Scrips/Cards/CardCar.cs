@@ -8,7 +8,7 @@ public class CardCar : Card
     private float _armor;
     private float _torque;
     private float _maxSpeed;
-    private float _maxArmor = 50;
+    private readonly float _maxArmor = 50;
 
     public CardCar(float health, float armor, float torque, float maxSpeed, bool isIncreaseMaxLevel)
     {

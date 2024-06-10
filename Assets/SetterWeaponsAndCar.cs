@@ -8,7 +8,7 @@ public class SetterWeaponsAndCar : MonoBehaviour
     [SerializeField] private int _indexButton;
 
     [SerializeField] private GameObject _selectionMenu;
-    [SerializeField] private GameObject _imageCurrentWeapon;
+    [SerializeField] private GameObject _currentImage;
 
     [SerializeField] private GameObject[] _images;
     [SerializeField] private GameObject[] _imagesFrame;
@@ -19,6 +19,7 @@ public class SetterWeaponsAndCar : MonoBehaviour
     [SerializeField] private Image _cardsMine;
 
     private readonly int _carIndex = 3;
+    private readonly int _correctRocketIndex = 10;
 
     private readonly int[] _countGun = new int[2] { 0, 10 };
     private readonly int[] _countRocket = new int[2] { 10, 20 };
@@ -33,6 +34,33 @@ public class SetterWeaponsAndCar : MonoBehaviour
     };
 
     private readonly string _currentIndex = "CurrentIndex";
+
+    private void OnEnable()
+    {
+        for (int i = 0; i < _weaponsAndCar.Length; i++)
+        {
+            if (i == _indexButton)
+            {
+                if (i == 0)
+                {
+                    _currentImage.GetComponent<Image>().sprite = _packCardsGun[PlayerPrefs.GetInt(_weaponsAndCar[i])].GetComponent<Image>().sprite;
+                    _currentImage.transform.localPosition = _packCardsGun[PlayerPrefs.GetInt(_weaponsAndCar[i])].transform.localPosition;
+                    _currentImage.transform.localScale = _packCardsGun[PlayerPrefs.GetInt(_weaponsAndCar[i])].transform.localScale;
+                }
+                else if (i == 1)
+                {
+                    _currentImage.GetComponent<Image>().sprite = _packCardsRocket[PlayerPrefs.GetInt(_weaponsAndCar[i]) - _correctRocketIndex].GetComponent<Image>().sprite;
+                    _currentImage.transform.localPosition = _packCardsRocket[PlayerPrefs.GetInt(_weaponsAndCar[i]) - _correctRocketIndex].transform.localPosition;
+                    _currentImage.transform.localScale = _packCardsRocket[PlayerPrefs.GetInt(_weaponsAndCar[i]) - _correctRocketIndex].transform.localScale;
+                }
+                else if (i == 3)
+                {
+                    _packCardsCar[0].SetActive(false);
+                    _packCardsCar[PlayerPrefs.GetInt(_weaponsAndCar[PlayerPrefs.GetInt(_currentIndex)])].SetActive(true);
+                }
+            }
+        }
+    }
 
     public void CloseSelectionMenu()
     {
@@ -72,11 +100,11 @@ public class SetterWeaponsAndCar : MonoBehaviour
         }
     }
 
-    public void SetNewWeapon(GameObject image) 
+    public void SetNewWeapon(GameObject image)
     {
-        _imageCurrentWeapon.GetComponent<Image>().sprite = image.GetComponent<Image>().sprite;
-        _imageCurrentWeapon.transform.localPosition = image.transform.localPosition;
-        _imageCurrentWeapon.transform.localScale = image.transform.localScale;
+        _currentImage.GetComponent<Image>().sprite = image.GetComponent<Image>().sprite;
+        _currentImage.transform.localPosition = image.transform.localPosition;
+        _currentImage.transform.localScale = image.transform.localScale;
 
         PlayerPrefs.SetInt(_weaponsAndCar[PlayerPrefs.GetInt(_currentIndex)], image.GetComponent<SetterCardIndex>().GiveIndex());
     }
@@ -101,7 +129,7 @@ public class SetterWeaponsAndCar : MonoBehaviour
         {
             for (int i = count[0]; i < count[1]; i++)
             {
-                
+
                 ActivatingAndConfiguringImages(countActiveImage, _packCards, index, i);
                 countActiveImage++;
 
@@ -129,6 +157,6 @@ public class SetterWeaponsAndCar : MonoBehaviour
         _images[countActiveImage].GetComponent<SetterCardIndex>().SetIndex(i);
         _images[countActiveImage].transform.localPosition = _packCards[index].transform.localPosition;
         _images[countActiveImage].transform.localScale = _packCards[index].transform.localScale;
-        _images[countActiveImage].GetComponent<Image>().sprite = _packCards[index].GetComponent<Image>().sprite;  
+        _images[countActiveImage].GetComponent<Image>().sprite = _packCards[index].GetComponent<Image>().sprite;
     }
 }
