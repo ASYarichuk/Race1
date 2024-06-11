@@ -16,7 +16,7 @@ public class SetterInGameWeaponAndCar : MonoBehaviour
 
     private void OnEnable()
     {
-        GameObject player = Instantiate(_carPrefab[PlayerPrefs.GetInt(_weaponsAndCar[0])], transform);
+        GameObject player = Instantiate(_carPrefab[PlayerPrefs.GetInt(_weaponsAndCar[3])], transform);
 
         player.GetComponent<Transform>();
     }
