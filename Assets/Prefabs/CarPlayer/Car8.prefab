@@ -724,7 +724,6 @@ MonoBehaviour:
   _parent: {fileID: 8121006605895019571}
   _barrel: {fileID: 8812223524241043002}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &1000232727471583482
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,7 +2233,6 @@ MonoBehaviour:
   _parent: {fileID: 2506483432322474171}
   _barrel: {fileID: 2996868417126591579}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &4323012281980713941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3698,7 @@ GameObject:
   - component: {fileID: 3771013688606021868}
   - component: {fileID: 6878745103046921109}
   - component: {fileID: 4719128144582749936}
+  - component: {fileID: -3955706792441299575}
   m_Layer: 0
   m_Name: Car8
   m_TagString: Untagged
@@ -3715,7 +3714,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6322115198721302507}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3730,7 +3729,7 @@ Transform:
   - {fileID: 4021089771502435491}
   - {fileID: 1010727185169298245}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &603433237061372787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3856,6 +3855,18 @@ MonoBehaviour:
   - {fileID: 6660693164913287216}
   - {fileID: 3720646803842175688}
   _angleTurn: 45
+--- !u!114 &-3955706792441299575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322115198721302507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8943102729eea48b60f674183342fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6354336532714785207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,7 +4961,6 @@ MonoBehaviour:
   _parent: {fileID: 5416536658687644270}
   _barrel: {fileID: 5929682877134365610}
   _machineGun: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &8053529250480957949
 GameObject:
   m_ObjectHideFlags: 0

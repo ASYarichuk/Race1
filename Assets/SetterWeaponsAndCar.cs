@@ -111,7 +111,11 @@ public class SetterWeaponsAndCar : MonoBehaviour
 
     public void SetNewCar(GameObject image)
     {
-        _packCardsCar[0].SetActive(false);
+        for (int i = 0; i < _packCardsCar.Length; i++)
+        {
+            _packCardsCar[i].SetActive(false);
+        }
+
         _packCardsCar[PlayerPrefs.GetInt(_weaponsAndCar[PlayerPrefs.GetInt(_currentIndex)])].SetActive(false);
         _packCardsCar[image.GetComponent<SetterCardIndex>().GiveIndex()].SetActive(true);
 

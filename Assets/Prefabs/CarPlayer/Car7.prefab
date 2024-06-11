@@ -61,7 +61,6 @@ MonoBehaviour:
   _parent: {fileID: 4647475881429954630}
   _barrel: {fileID: 9218643061086982138}
   _machineGun: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &444244248457404090
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +221,7 @@ GameObject:
   - component: {fileID: 4621421640090062890}
   - component: {fileID: 5366139928581230908}
   - component: {fileID: 6258383274896407263}
+  - component: {fileID: -7574427764099228862}
   m_Layer: 0
   m_Name: Car7
   m_TagString: Untagged
@@ -237,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875622355331771025}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -252,7 +252,7 @@ Transform:
   - {fileID: 3242127794747637808}
   - {fileID: 2152987039659772986}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3082464107684880237
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -378,6 +378,18 @@ MonoBehaviour:
   - {fileID: 571106543507661608}
   - {fileID: 5514555094204494662}
   _angleTurn: 45
+--- !u!114 &-7574427764099228862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875622355331771025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8943102729eea48b60f674183342fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &977814028242537867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2133,7 +2145,6 @@ MonoBehaviour:
   _parent: {fileID: 5987716333231261753}
   _barrel: {fileID: 7520349222710527198}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &3040034174516978008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,7 +2450,6 @@ MonoBehaviour:
   _parent: {fileID: 4147641056717631307}
   _barrel: {fileID: 467852200167480461}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &3394632688643213196
 GameObject:
   m_ObjectHideFlags: 0

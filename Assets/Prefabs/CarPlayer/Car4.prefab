@@ -1341,7 +1341,6 @@ MonoBehaviour:
   _parent: {fileID: 6171212081839903318}
   _barrel: {fileID: 6839522523317677805}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &3110891000206893130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1402,6 @@ MonoBehaviour:
   _parent: {fileID: 7080671649118557882}
   _barrel: {fileID: 7465682854155459312}
   _machineGun: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &3195771401989093474
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1713,6 @@ MonoBehaviour:
   _parent: {fileID: 182523131280346692}
   _barrel: {fileID: 2003486271327798447}
   _rocketLauncher: {fileID: 0}
-  _currentTimeCooldown: 0
 --- !u!1 &3952073105980941658
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,6 +2475,7 @@ GameObject:
   - component: {fileID: 144725077820865593}
   - component: {fileID: 7393502909434817908}
   - component: {fileID: 5866237796691527058}
+  - component: {fileID: -2536507056054783160}
   m_Layer: 0
   m_Name: Car4
   m_TagString: Untagged
@@ -2493,7 +2491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4326135720977812192}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2508,7 +2506,7 @@ Transform:
   - {fileID: 3691531716284047481}
   - {fileID: 5421569785422531580}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &20870643658177182
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2634,6 +2632,18 @@ MonoBehaviour:
   - {fileID: 7227821155722049705}
   - {fileID: 3517337462641654542}
   _angleTurn: 45
+--- !u!114 &-2536507056054783160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326135720977812192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8943102729eea48b60f674183342fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4343557492660082641
 GameObject:
   m_ObjectHideFlags: 0
