@@ -7,7 +7,7 @@ public class Ammunition : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _timeLife;
 
-    [SerializeField] private int _damage = 1000;
+    [SerializeField] private float _damage = 1000;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class Ammunition : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public int GiveDamage()
+    public float GiveDamage()
     {
         return _damage;
     }

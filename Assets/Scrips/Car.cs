@@ -10,7 +10,7 @@ public class Car : MonoBehaviour
     private float _damageMultiplier;
     private float _currentDamage;
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         _damageMultiplier = (100 - _armor) / 100;
         _currentDamage = damage * _damageMultiplier;
@@ -30,22 +30,16 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-
         if (other.TryGetComponent(out Ammunition ammunition))
         {
-            Debug.Log("OnTriggerEnter + OnTriggerEnter");
             TakeDamage(ammunition.GiveDamage());
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("OnCollisionEnter");
-
         if (collision.transform.TryGetComponent(out Ammunition ammunition))
         {
-            Debug.Log("OnCollisionEnter + OnCollisionEnter");
             TakeDamage(ammunition.GiveDamage());
         }
     }

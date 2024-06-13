@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private int _damage;
+    [SerializeField] private float _damage;
 
     [SerializeField] private float _cooldown;
 
@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour
         return currentTimeCooldown;
     }
 
-    public int GiveDamage()
+    public float GiveDamage()
     {
         return _damage;
     }
@@ -33,5 +33,15 @@ public class Weapon : MonoBehaviour
     public float GiveCooldown()
     {
         return _cooldown;
+    }
+
+    public void SetDamage(float damage)
+    {
+        _damage = damage;
+    }
+    
+    public void SetCooldown(float cooldown)
+    {
+        _cooldown = cooldown;
     }
 }
