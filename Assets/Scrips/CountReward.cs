@@ -54,11 +54,11 @@ public class CountReward : MonoBehaviour
     private readonly int[] _legendaryChestCountCardThreeStar = new int[2] { 60, 121 };
     private readonly int[] _legendaryChestCountCardFourStar = new int[2] { 40, 121 };
     private readonly int[] _legendaryChestCountCardFiveStar = new int[2] { 25, 66 };
-    private readonly int _legendaryChestPercentCarCard = 4; //26
-    private readonly int _legendaryChestPercentCarOneStar = 10; // 51
-    private readonly int _legendaryChestPercentCarTwoStar = 21; // 71
-    private readonly int _legendaryChestPercentCarThreeStar = 51; //91
-    private readonly int _legendaryChestPercentCarFourStar = 70; //100
+    private readonly int _legendaryChestPercentCarCard = 4; 
+    private readonly int _legendaryChestPercentCarOneStar = 10; 
+    private readonly int _legendaryChestPercentCarTwoStar = 21; 
+    private readonly int _legendaryChestPercentCarThreeStar = 51; 
+    private readonly int _legendaryChestPercentCarFourStar = 70; 
 
     public int[] GiveCountStarAndCard(int index)
     {
@@ -70,132 +70,212 @@ public class CountReward : MonoBehaviour
         return new int[2] { countsStar, countsCard };
     }
 
-    private int[] GiveCount(int index)
+    public int[] GiveShopCountStarAndCard(int index)
     {
-        int currentCountStar = 0;
-        int currentCountCard = 0;
+        int[] reward = new int[2];
 
         int currentPercent = Random.Range(0, 101);
 
-        Debug.Log(currentPercent);
+        if (index == _usualChest)
+        {
+            reward = GiveUsualChest(currentPercent);
+        }
+        else if (index == _rareChest)
+        {
+            reward = GiveRareChest(currentPercent);
+        }
+        else if (index == _epicChest)
+        {
+            reward = GiveEpicChest(currentPercent);
+        }
+        else if (index == _mythicalChest)
+        {
+            reward = GiveMythicalChest(currentPercent);
+        }
+        else if (index == _legendaryChest)
+        {
+            reward = GiveLegendaryChest(currentPercent);
+        }
+
+        return reward;
+    }
+
+    private int[] GiveCount(int index)
+    {
+        int[] reward = new int[2];
+
+        int currentPercent = Random.Range(0, 101);
 
         if (PlayerPrefs.GetInt(_chestsName[index]) == _usualChest)
         {
-            if (currentPercent < _usualChestPercentCarCard)
-            {
-                currentCountStar = _carCard;
-            }
-            else
-            {
-                currentCountStar = _oneStarCard;
-            }
-
-            currentCountCard = Random.Range(_usualChestCountCard[0], _usualChestCountCard[1]);
+            reward = GiveUsualChest(currentPercent);
         }
         else if (PlayerPrefs.GetInt(_chestsName[index]) == _rareChest)
         {
-            if (currentPercent < _rareChestPercentCarCard)
-            {
-                currentCountStar = _carCard;
-                currentCountCard = Random.Range(_rareChestCountCardOneStar[0], _rareChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _rareChestPercentCarOneStar)
-            {
-                currentCountStar = _oneStarCard;
-                currentCountCard = Random.Range(_rareChestCountCardOneStar[0], _rareChestCountCardOneStar[1]);
-            }
-            else
-            {
-                currentCountStar = _twoStarCard;
-                currentCountCard = Random.Range(_rareChestCountCardTwoStar[0], _rareChestCountCardTwoStar[1]);
-            }
+            reward = GiveRareChest(currentPercent);
         }
         else if (PlayerPrefs.GetInt(_chestsName[index]) == _epicChest)
         {
-            if (currentPercent < _epicChestPercentCarCard)
-            {
-                currentCountStar = _carCard;
-                currentCountCard = Random.Range(_epicChestCountCardOneStar[0], _epicChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _epicChestPercentCarOneStar)
-            {
-                currentCountStar = _oneStarCard;
-                currentCountCard = Random.Range(_epicChestCountCardOneStar[0], _epicChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _epicChestPercentCarTwoStar)
-            {
-                currentCountStar = _twoStarCard;
-                currentCountCard = Random.Range(_epicChestCountCardTwoStar[0], _epicChestCountCardTwoStar[1]);
-            }
-            else
-            {
-                currentCountStar = _threeStarCard;
-                currentCountCard = Random.Range(_epicChestCountCardThreeStar[0], _epicChestCountCardThreeStar[1]);
-            }
+            reward = GiveEpicChest(currentPercent);
         }
         else if (PlayerPrefs.GetInt(_chestsName[index]) == _mythicalChest)
         {
-            if (currentPercent < _mythicalChestPercentCarCard)
-            {
-                currentCountStar = _carCard;
-                currentCountCard = Random.Range(_mythicalChestCountCardOneStar[0], _mythicalChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _mythicalChestPercentCarOneStar)
-            {
-                currentCountStar = _oneStarCard;
-                currentCountCard = Random.Range(_mythicalChestCountCardOneStar[0], _mythicalChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _mythicalChestPercentCarTwoStar)
-            {
-                currentCountStar = _twoStarCard;
-                currentCountCard = Random.Range(_mythicalChestCountCardTwoStar[0], _mythicalChestCountCardTwoStar[1]);
-            }
-            else if (currentPercent < _mythicalChestPercentCarThreeStar)
-            {
-                currentCountStar = _threeStarCard;
-                currentCountCard = Random.Range(_mythicalChestCountCardThreeStar[0], _mythicalChestCountCardThreeStar[1]);
-            }
-            else
-            {
-                currentCountStar = _fourStarCard;
-                currentCountCard = Random.Range(_mythicalChestCountCardFourStar[0], _mythicalChestCountCardFourStar[1]);
-            }
+            reward = GiveMythicalChest(currentPercent);
         }
         else if (PlayerPrefs.GetInt(_chestsName[index]) == _legendaryChest)
         {
-            if (currentPercent < _legendaryChestPercentCarCard)
-            {
-                currentCountStar = _carCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardOneStar[0], _legendaryChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _legendaryChestPercentCarOneStar)
-            {
-                currentCountStar = _oneStarCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardOneStar[0], _legendaryChestCountCardOneStar[1]);
-            }
-            else if (currentPercent < _legendaryChestPercentCarTwoStar)
-            {
-                currentCountStar = _twoStarCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardTwoStar[0], _legendaryChestCountCardTwoStar[1]);
-            }
-            else if (currentPercent < _legendaryChestPercentCarThreeStar)
-            {
-                currentCountStar = _threeStarCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardThreeStar[0], _legendaryChestCountCardThreeStar[1]);
-            }
-            else if (currentPercent < _legendaryChestPercentCarFourStar)
-            {
-                currentCountStar = _fourStarCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardFourStar[0], _legendaryChestCountCardFourStar[1]);
-            }
-            else
-            {
-                currentCountStar = _fiveStarCard;
-                currentCountCard = Random.Range(_legendaryChestCountCardFiveStar[0], _legendaryChestCountCardFiveStar[1]);
-            }
+            reward = GiveLegendaryChest(currentPercent);
         }
 
-        int[] reward = new int[2] { currentCountStar, currentCountCard };
+        return reward;
+    }
+
+    private int[] GiveUsualChest(int currentPercent)
+    {
+        int countStar;
+
+        if (currentPercent < _usualChestPercentCarCard)
+        {
+            countStar = _carCard;
+        }
+        else
+        {
+            countStar = _oneStarCard;
+        }
+
+        int countCard = Random.Range(_usualChestCountCard[0], _usualChestCountCard[1]);
+
+        int[] reward = new int[2] { countStar, countCard };
+        return reward;
+    }
+    
+    private int[] GiveRareChest(int currentPercent)
+    {
+        int countStar;
+        int countCard;
+
+        if (currentPercent < _rareChestPercentCarCard)
+        {
+            countStar = _carCard;
+            countCard = Random.Range(_rareChestCountCardOneStar[0], _rareChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _rareChestPercentCarOneStar)
+        {
+            countStar = _oneStarCard;
+            countCard = Random.Range(_rareChestCountCardOneStar[0], _rareChestCountCardOneStar[1]);
+        }
+        else
+        {
+            countStar = _twoStarCard;
+            countCard = Random.Range(_rareChestCountCardTwoStar[0], _rareChestCountCardTwoStar[1]);
+        }
+
+        int[] reward = new int[2] { countStar, countCard };
+        return reward;
+    }    
+    
+    private int[] GiveEpicChest(int currentPercent)
+    {
+        int countStar;
+        int countCard;
+
+        if (currentPercent < _epicChestPercentCarCard)
+        {
+            countStar = _carCard;
+            countCard = Random.Range(_epicChestCountCardOneStar[0], _epicChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _epicChestPercentCarOneStar)
+        {
+            countStar = _oneStarCard;
+            countCard = Random.Range(_epicChestCountCardOneStar[0], _epicChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _epicChestPercentCarTwoStar)
+        {
+            countStar = _twoStarCard;
+            countCard = Random.Range(_epicChestCountCardTwoStar[0], _epicChestCountCardTwoStar[1]);
+        }
+        else
+        {
+            countStar = _threeStarCard;
+            countCard = Random.Range(_epicChestCountCardThreeStar[0], _epicChestCountCardThreeStar[1]);
+        }
+
+        int[] reward = new int[2] { countStar, countCard };
+        return reward;
+    }    
+    
+    private int[] GiveMythicalChest(int currentPercent)
+    {
+        int countStar;
+        int countCard;
+
+        if (currentPercent < _mythicalChestPercentCarCard)
+        {
+            countStar = _carCard;
+            countCard = Random.Range(_mythicalChestCountCardOneStar[0], _mythicalChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _mythicalChestPercentCarOneStar)
+        {
+            countStar = _oneStarCard;
+            countCard = Random.Range(_mythicalChestCountCardOneStar[0], _mythicalChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _mythicalChestPercentCarTwoStar)
+        {
+            countStar = _twoStarCard;
+            countCard = Random.Range(_mythicalChestCountCardTwoStar[0], _mythicalChestCountCardTwoStar[1]);
+        }
+        else if (currentPercent < _mythicalChestPercentCarThreeStar)
+        {
+            countStar = _threeStarCard;
+            countCard = Random.Range(_mythicalChestCountCardThreeStar[0], _mythicalChestCountCardThreeStar[1]);
+        }
+        else
+        {
+            countStar = _fourStarCard;
+            countCard = Random.Range(_mythicalChestCountCardFourStar[0], _mythicalChestCountCardFourStar[1]);
+        }
+
+        int[] reward = new int[2] { countStar, countCard };
+        return reward;
+    }    
+    
+    private int[] GiveLegendaryChest(int currentPercent)
+    {
+        int countStar;
+        int countCard;
+
+        if (currentPercent < _legendaryChestPercentCarCard)
+        {
+            countStar = _carCard;
+            countCard = Random.Range(_legendaryChestCountCardOneStar[0], _legendaryChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _legendaryChestPercentCarOneStar)
+        {
+            countStar = _oneStarCard;
+            countCard = Random.Range(_legendaryChestCountCardOneStar[0], _legendaryChestCountCardOneStar[1]);
+        }
+        else if (currentPercent < _legendaryChestPercentCarTwoStar)
+        {
+            countStar = _twoStarCard;
+            countCard = Random.Range(_legendaryChestCountCardTwoStar[0], _legendaryChestCountCardTwoStar[1]);
+        }
+        else if (currentPercent < _legendaryChestPercentCarThreeStar)
+        {
+            countStar = _threeStarCard;
+            countCard = Random.Range(_legendaryChestCountCardThreeStar[0], _legendaryChestCountCardThreeStar[1]);
+        }
+        else if (currentPercent < _legendaryChestPercentCarFourStar)
+        {
+            countStar = _fourStarCard;
+            countCard = Random.Range(_legendaryChestCountCardFourStar[0], _legendaryChestCountCardFourStar[1]);
+        }
+        else
+        {
+            countStar = _fiveStarCard;
+            countCard = Random.Range(_legendaryChestCountCardFiveStar[0], _legendaryChestCountCardFiveStar[1]);
+        }
+
+        int[] reward = new int[2] { countStar, countCard };
         return reward;
     }
 }
