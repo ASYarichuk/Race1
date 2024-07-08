@@ -6,16 +6,19 @@ using TMPro;
 public class Resurs : MonoBehaviour
 {
     [SerializeField] private TMP_Text _energy;
-    [SerializeField] private TMP_Text _gold;
-    [SerializeField] private TMP_Text _cristals;
 
-    private int _energyCount = 30;
-   // private int _goldCount = 100;
-    //private int _cristalsCount = 0;
+    private int _energyCount = 100;
+    private readonly int _maxEnergy = 100;
+
+    private void Awake()
+    {
+        _energy.text = $"{_energyCount} / {_maxEnergy}";
+    }
 
     public void ReduceEnergy(int count)
     {
         _energyCount -= count;
+        _energy.text = $"{_energyCount} / {_maxEnergy}";
     }
 
     public bool CheckEnergy(int count)
@@ -27,11 +30,4 @@ public class Resurs : MonoBehaviour
 
         return false;
     }
-
-    private void AddEnergy()
-    {
-
-    }
-
-
 }

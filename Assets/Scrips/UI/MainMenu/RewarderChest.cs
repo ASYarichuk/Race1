@@ -15,9 +15,6 @@ public class RewarderChest : MonoBehaviour
     [SerializeField] private ActivatorStars[] _stars;
 
     [SerializeField] private ListCardForReward _listCardForReward;
-    [SerializeField] private Image _gold;
-
-    private bool _isCard = true;
 
     private readonly int _maxCountStar = 5;
 
@@ -29,7 +26,7 @@ public class RewarderChest : MonoBehaviour
         }
     }
 
-    private void FillCardReward(int indexPlaceReward, int countStar, int countCard) 
+    private void FillCardReward(int indexPlaceReward, int countStar, int countCard)
     {
         CardsForReward cardsForReward = null;
 
@@ -45,46 +42,34 @@ public class RewarderChest : MonoBehaviour
             if (countStar > _maxCountStar)
             {
                 countStar = _maxCountStar;
-                _isCard = false;
             }
         }
 
-        if (_isCard)
+        _sliders[indexPlaceReward].gameObject.SetActive(true);
+        _stars[indexPlaceReward].gameObject.SetActive(true);
+        _stars[indexPlaceReward].Deactivate();
+
+        int index = Random.Range(0, cardsForReward.GiveCountCards());
+
+        int numberCurrentCard = cardsForReward.GiveSerialNumber(index);
+
+        _levelsFull[indexPlaceReward].SetActive(false);
+
+        _textsName[indexPlaceReward].text = cardsForReward.GiveCardName(index);
+        _images[indexPlaceReward].sprite = cardsForReward.GiveImage(index).sprite;
+        _images[indexPlaceReward].GetComponent<RectTransform>().localPosition = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localPosition;
+        _images[indexPlaceReward].GetComponent<RectTransform>().localScale = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localScale;
+
+
+        _stars[indexPlaceReward].Activate(cardsForReward.GiveCountStar(index));
+
+        if (countStar == 0)
         {
-            _sliders[indexPlaceReward].gameObject.SetActive(true);
-            _stars[indexPlaceReward].gameObject.SetActive(true);
-            _stars[indexPlaceReward].Deactivate();
-
-            int index = Random.Range(0, cardsForReward.GiveCountCards());
-
-            int numberCurrentCard = cardsForReward.GiveSerialNumber(index);
-
-            _levelsFull[indexPlaceReward].SetActive(false);
-
-            _textsName[indexPlaceReward].text = cardsForReward.GiveCardName(index);
-            _images[indexPlaceReward].sprite = cardsForReward.GiveImage(index).sprite;
-            _images[indexPlaceReward].GetComponent<RectTransform>().localPosition = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localPosition;
-            _images[indexPlaceReward].GetComponent<RectTransform>().localScale = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localScale;
-
-
-            _stars[indexPlaceReward].Activate(cardsForReward.GiveCountStar(index));
-
-            if (countStar == 0)
-            {
-                FillCar(indexPlaceReward, numberCurrentCard, countCard);
-            }
-            else
-            {
-                FillWeapon(indexPlaceReward, numberCurrentCard, countCard, cardsForReward);
-            }
+            FillCar(indexPlaceReward, numberCurrentCard, countCard);
         }
         else
         {
-            _images[indexPlaceReward].sprite = _gold.sprite;
-            _textsName[indexPlaceReward].text = "200";
-            _sliders[indexPlaceReward].gameObject.SetActive(false);
-            _stars[indexPlaceReward].gameObject.SetActive(false);
-            _isCard = true;
+            FillWeapon(indexPlaceReward, numberCurrentCard, countCard, cardsForReward);
         }
     }
 
@@ -106,7 +91,7 @@ public class RewarderChest : MonoBehaviour
             cardsForReward.DeleteCard(numberCurrentCard);
         }
     }
-    
+
     private void FillCar(int indexPlaceReward, int numberCurrentCard, int countCard)
     {
         ListOfCardsCar.AddCard(numberCurrentCard, countCard);
