@@ -18,9 +18,9 @@ public class CardsForReward : MonoBehaviour
         return _textsName[index].text;
     }
 
-    public Sprite GiveImage(int index)
+    public Image GiveImage(int index)
     {
-        return _images[index].sprite;
+        return _images[index];
     }
 
     public int GiveCountCards()

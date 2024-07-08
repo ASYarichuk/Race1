@@ -62,7 +62,11 @@ public class RewarderChest : MonoBehaviour
             _levelsFull[indexPlaceReward].SetActive(false);
 
             _textsName[indexPlaceReward].text = cardsForReward.GiveCardName(index);
-            _images[indexPlaceReward].sprite = cardsForReward.GiveImage(index);
+            _images[indexPlaceReward].sprite = cardsForReward.GiveImage(index).sprite;
+            _images[indexPlaceReward].GetComponent<RectTransform>().localPosition = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localPosition;
+            _images[indexPlaceReward].GetComponent<RectTransform>().localScale = cardsForReward.GiveImage(index).GetComponent<RectTransform>().localScale;
+
+
             _stars[indexPlaceReward].Activate(cardsForReward.GiveCountStar(index));
 
             if (countStar == 0)
