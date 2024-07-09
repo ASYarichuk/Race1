@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RocketLauncher : Weapon
 {
-    [SerializeField] private Button _rocketLauncher;
+    [SerializeField] private Buttons _rocketLauncher;
 
     private float _currentTimeCooldown;
 

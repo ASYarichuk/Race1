@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MachineGun : Weapon
 {
-    [SerializeField] private Button _machineGun;
+    [SerializeField] private Buttons _machineGun;
 
     private float _currentTimeCooldown;
 

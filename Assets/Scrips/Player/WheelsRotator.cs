@@ -8,8 +8,8 @@ public class WheelsRotator : MonoBehaviour
 
     [SerializeField] private float _angleTurn;
 
-    private Button _leftTurn;
-    private Button _rightTurn;
+    private Buttons _leftTurn;
+    private Buttons _rightTurn;
 
     private PlayerButton _buttons;
 

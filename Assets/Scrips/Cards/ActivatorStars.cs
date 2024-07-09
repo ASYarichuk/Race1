@@ -7,7 +7,7 @@ public class ActivatorStars : MonoBehaviour
 {
     [SerializeField] private GameObject[] _stars;
 
-    private readonly int _maxStars = 5;
+    [SerializeField] private int _maxStars = 5;
 
     public void Activate(int index)
     {

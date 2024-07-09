@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerButton : MonoBehaviour
 {
-    [SerializeField] private Button[] _buttons = new Button[9];
+    [SerializeField] private Buttons[] _buttons = new Buttons[9];
 
-    public Button GiveButton(int index)
+    public Buttons GiveButton(int index)
     {
         return _buttons[index];
     }

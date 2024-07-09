@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GetterRewardFromChess : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class GetterRewardFromChess : MonoBehaviour
 
             GetReward();
             _rewardWindow.GetComponent<RewarderChest>().SetReward(rewardCountStars, rewardCountCards);
+
+            gameObject.GetComponent<Image>().sprite = null;
         }
     }
 

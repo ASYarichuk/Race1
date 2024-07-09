@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MiningPlant : Weapon
 {
-    [SerializeField] private Button _miningPlant;
+    [SerializeField] private Buttons _miningPlant;
 
     [SerializeField] private float _currentTimeCooldown;
 

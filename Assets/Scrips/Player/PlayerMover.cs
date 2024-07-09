@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
 {
-    private Button _gasPedal;
-    private Button _forward;
-    private Button _back;
+    private Buttons _gasPedal;
+    private Buttons _forward;
+    private Buttons _back;
 
     [SerializeField] private WheelCollider[] _wheels = new WheelCollider[4];
     [SerializeField] private float _torque = 200f;

@@ -6,7 +6,7 @@ public class Accelerator : MonoBehaviour
 {
     [SerializeField] private float _ratio = 5f;
     [SerializeField] private float _startRatio = 1f;
-    [SerializeField] private Button _acceleration;
+    [SerializeField] private Buttons _acceleration;
     [SerializeField] private float _time;
     [SerializeField] private float _cooldown;
 
