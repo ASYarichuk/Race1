@@ -5,9 +5,9 @@ using UnityEngine;
 public static class PlayerLevel
 {
     private static int _currentExperience = 0;
-    private static int _maxLevel = 20;
+    private readonly static int _maxLevel = 20;
 
-    private static List<int> _experienceForLevel = new List<int>
+    private readonly static List<int> _experienceForLevel = new()
     {
         10,
         25,
@@ -33,6 +33,16 @@ public static class PlayerLevel
 
     public static int Level { get; private set; } = 1;
 
+    public static int GiveCurrentExperience()
+    {
+        return _currentExperience;
+    } 
+    
+    public static int GiveNeedExperience()
+    {
+        return _experienceForLevel[Level - 1];
+    }
+
     public static void AddExperience(int experience)
     {
         if (Level >= _maxLevel)
@@ -46,6 +56,12 @@ public static class PlayerLevel
         {
             _currentExperience -= _experienceForLevel[Level - 1];
             Level += 1;
+
+            if (_currentExperience > _experienceForLevel[Level - 1])
+            {
+                _currentExperience -= _experienceForLevel[Level - 1];
+                Level += 1;
+            }
         }
     }
 }

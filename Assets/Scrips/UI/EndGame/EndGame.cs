@@ -7,6 +7,7 @@ public class EndGame : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _finishText;
     [SerializeField] private CircleCounter _circleCounter;
+    [SerializeField] private RewardExp _rewardExp;
 
     private int _place = 0;
     private int _experience = 0;
@@ -67,23 +68,16 @@ public class EndGame : MonoBehaviour
                 break;
         }
 
+        _rewardExp.Show(_experience);
         PlayerLevel.AddExperience(_experience);
     }
 
     private void SetCountStarsForMission()
     {
-        Debug.Log("SetCountStarsForMission");
-        Debug.Log(PlayerPrefs.GetInt(_isMission));
-        Debug.Log(PlayerPrefs.GetInt(_missions[PlayerPrefs.GetInt(_currentMission)]));
-        Debug.Log(_missions[PlayerPrefs.GetInt(_currentMission)]);
-        Debug.Log(PlayerPrefs.GetInt(_currentMission));
-
         if (PlayerPrefs.GetInt(_isMission) == 1)
         {
-            Debug.Log("if_1");
             if (PlayerPrefs.GetInt(_missions[PlayerPrefs.GetInt(_currentMission)]) < _correctPlaceStar - _place)
             {
-                Debug.Log("if_2");
                 PlayerPrefs.SetInt(_missions[PlayerPrefs.GetInt(_currentMission)], _correctPlaceStar - _place);
             }
         }

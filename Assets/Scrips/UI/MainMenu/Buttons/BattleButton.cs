@@ -9,12 +9,17 @@ public class BattleButton : MonoBehaviour
     [SerializeField] private Resurs _resurs;
     [SerializeField] private int _countEnergyForBattle = 10;
 
+    private readonly string _isMission = "IsMission";
+    private readonly int _meaningNoMission = 0;
+
     public void OnClickButton()
     {
         if (_resurs.CheckEnergy(_countEnergyForBattle) == false)
             return;
 
         _resurs.ReduceEnergy(_countEnergyForBattle);
+
+        PlayerPrefs.SetInt(_isMission, _meaningNoMission);
 
         int indexScene = Random.Range(0, _scenes.Count);
 

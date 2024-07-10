@@ -9,9 +9,11 @@ public class GetterRewardFromChess : MonoBehaviour
     [SerializeField] private int _currentPlace;
     [SerializeField] private GameObject _rewardWindow;
     [SerializeField] private CountReward _countReward;
+    [SerializeField] private Sprite _void;
 
     private readonly int _countRewards = 2;
     private readonly int _meaningOpenChest = 1;
+    private readonly int _closeChest = 0;
 
     private readonly string[] _playerPrefs = new string[4]
     {
@@ -47,7 +49,9 @@ public class GetterRewardFromChess : MonoBehaviour
             GetReward();
             _rewardWindow.GetComponent<RewarderChest>().SetReward(rewardCountStars, rewardCountCards);
 
-            gameObject.GetComponent<Image>().sprite = null;
+            PlayerPrefs.DeleteKey(_playerPrefs[_currentPlace]);
+            PlayerPrefs.SetInt(_playerPrefsState[_currentPlace], _closeChest);
+            gameObject.GetComponent<Image>().sprite = _void;
         }
     }
 
