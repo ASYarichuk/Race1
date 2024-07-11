@@ -1,10 +1,15 @@
 {
   "dependencies": {
+    "com.coffee.ui-particle": "5.0.0-preview.4",
+    "com.littlebigfun.addressable-importer": "0.16.1",
     "com.unity.2d.sprite": "1.0.0",
+    "com.unity.ads": "4.4.2",
     "com.unity.ai.navigation": "1.1.5",
+    "com.unity.analytics": "3.8.1",
     "com.unity.collab-proxy": "2.2.0",
     "com.unity.feature.development": "1.0.1",
     "com.unity.postprocessing": "3.2.2",
+    "com.unity.purchasing": "4.9.3",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.5",
     "com.unity.ugui": "1.0.0",
@@ -39,9 +44,7 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.littlebigfun.addressable-importer": "0.16.1",
-    "com.coffee.ui-particle": "5.0.0-preview.4"
+    "com.unity.modules.xr": "1.0.0"
   },
   "scopedRegistries": [
     {
