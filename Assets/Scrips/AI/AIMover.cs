@@ -41,6 +41,16 @@ public class AIMover : MonoBehaviour
         _speed = _rigidbody.velocity.magnitude * _coefficientKPHInMPH;
     }
 
+    public void SetTorque(float torque)
+    {
+        _torque = torque;
+    } 
+    
+    public void SetMaxSpeed(float maxSpeed)
+    {
+        _maxSpeed = maxSpeed;
+    }
+
     private void Move()
     {
         if (_speed >= _maxSpeed)
@@ -49,6 +59,7 @@ public class AIMover : MonoBehaviour
             {
                 _wheels[i].brakeTorque = _forceBraking;
             }
+
             return;
         }
 

@@ -6,28 +6,18 @@ public class Car : MonoBehaviour
 {
     [SerializeField] private float _health;
     [SerializeField] private float _armor;
+    [SerializeField] private bool _isPlayer = false;
 
     private float _damageMultiplier;
     private float _currentDamage;
 
-    public void TakeDamage(float damage)
+    private void OnEnable()
     {
-        _damageMultiplier = (100 - _armor) / 100;
-        _currentDamage = damage * _damageMultiplier;
-
-        _health -= _currentDamage;
-
-        if (_health <= 0)
+        if (gameObject.GetComponent<PlayerMover>())
         {
-            Death();
+            _isPlayer = true;
         }
     }
-
-    public void Death()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Ammunition ammunition))
@@ -42,5 +32,40 @@ public class Car : MonoBehaviour
         {
             TakeDamage(ammunition.GiveDamage());
         }
+    }
+
+    public void SetHealth(float health)
+    {
+        _health = health;
+    }
+
+    public void SetArmor(float armor)
+    {
+        _armor = armor;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _damageMultiplier = (100 - _armor) / 100;
+        _currentDamage = damage * _damageMultiplier;
+
+        _health -= _currentDamage;
+
+        if (_health <= 0)
+        {
+            if (_isPlayer)
+            {
+                GetComponentInParent<LoseGame>().EnableWindow();
+            }
+            else
+            {
+                Death();
+            }
+        }
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
     }
 }

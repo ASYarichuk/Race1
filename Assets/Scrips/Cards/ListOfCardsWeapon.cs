@@ -17,7 +17,7 @@ public static class ListOfCardsWeapon
         new CardWeapon(0.1f,0.1f,1,false, true),
         new CardWeapon(0.2f,0.1f,2,false, false),
         new CardWeapon(0.35f,0.1f,3,false, false),
-        new CardWeapon(0.5f,0.1f,4,false, false),
+        new CardWeapon(0.35f,0.05f,4,false, false),
         new CardWeapon(0.5f,0.05f,5,false, false),
 
         new CardWeapon(20,15,1,false, true),

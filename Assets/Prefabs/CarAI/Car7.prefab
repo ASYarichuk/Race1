@@ -1539,7 +1539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7351975680208885429
 Transform:
   m_ObjectHideFlags: 0
@@ -2036,7 +2036,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5418549821162119607
 Transform:
   m_ObjectHideFlags: 0
@@ -3775,6 +3775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7182194120040419457}
   - component: {fileID: 7958112809545273347}
+  - component: {fileID: 7582034815988662067}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -3821,6 +3822,24 @@ MonoBehaviour:
   _parent: {fileID: 7182194120040419457}
   _barrel: {fileID: 802852218113397914}
   _currentTimeCooldown: 0
+--- !u!114 &7582034815988662067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127959859982456605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1795d2a6934f8be4ebd9d4569520c38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 3925078590571437304}
+  - {fileID: 2580429246433165654}
+  - {fileID: 5742740931275951197}
+  - {fileID: 368460638962238346}
+  - {fileID: 80389436863061087}
 --- !u!1 &7326481118914137028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4257,7 +4276,7 @@ Transform:
   m_GameObject: {fileID: 7670143221106291021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 220.45, y: 10.63, z: 544.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4405,7 +4424,6 @@ MonoBehaviour:
   _maxRatioTorqueAI: 3
   _raycastDistance: 2
   _aIWheelsRotator: {fileID: 7079788718674032673}
-  _mass: 0
 --- !u!114 &7985411789094285181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5082,6 +5100,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6175333425637587618}
   - component: {fileID: 1403787215442101308}
+  - component: {fileID: 8411080102824469517}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -5133,6 +5152,29 @@ MonoBehaviour:
   _parent: {fileID: 6175333425637587618}
   _barrel: {fileID: 5484282501078399759}
   _currentTimeCooldown: 0
+--- !u!114 &8411080102824469517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8711648448991638241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1795d2a6934f8be4ebd9d4569520c38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 2368352238910112003}
+  - {fileID: 936135129843476355}
+  - {fileID: 1232270786251344521}
+  - {fileID: 4948358979468725343}
+  - {fileID: 8598744645445018229}
+  - {fileID: 8549143289203542878}
+  - {fileID: 8747467291437086231}
+  - {fileID: 3272691789127871079}
+  - {fileID: 251660189123246060}
+  - {fileID: 3511997360050352219}
 --- !u!1 &8747467291437086231
 GameObject:
   m_ObjectHideFlags: 0

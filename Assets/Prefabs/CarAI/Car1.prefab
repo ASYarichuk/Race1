@@ -2515,6 +2515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7630705603230556653}
   - component: {fileID: 1147445570452206064}
+  - component: {fileID: 1561254815284677359}
   m_Layer: 0
   m_Name: RocketLauncher
   m_TagString: Untagged
@@ -2561,6 +2562,24 @@ MonoBehaviour:
   _parent: {fileID: 7630705603230556653}
   _barrel: {fileID: 1534925257381923992}
   _currentTimeCooldown: 0
+--- !u!114 &1561254815284677359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522304584118769456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1795d2a6934f8be4ebd9d4569520c38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 9040219389594756457}
+  - {fileID: 7285300149831265457}
+  - {fileID: 2105866005927740463}
+  - {fileID: 8408127684392161517}
+  - {fileID: 3713506968549697528}
 --- !u!1 &4725917809676840978
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,7 +3315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2052931670786391552
 Transform:
   m_ObjectHideFlags: 0
@@ -3534,7 +3553,7 @@ Transform:
   m_GameObject: {fileID: 6545136051302046225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 238.12, y: 10.63, z: 529.8882}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3682,7 +3701,6 @@ MonoBehaviour:
   _maxRatioTorqueAI: 3
   _raycastDistance: 2
   _aIWheelsRotator: {fileID: 8450769474326892294}
-  _mass: 0
 --- !u!114 &1310439774883689332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5165,6 +5183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9038326157216798627}
   - component: {fileID: 5242461450566441157}
+  - component: {fileID: 5806641297568571763}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -5216,6 +5235,29 @@ MonoBehaviour:
   _parent: {fileID: 9038326157216798627}
   _barrel: {fileID: 4256879358120961683}
   _currentTimeCooldown: 0
+--- !u!114 &5806641297568571763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832109099551144759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1795d2a6934f8be4ebd9d4569520c38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6086709618997049669}
+  - {fileID: 6449362442921810894}
+  - {fileID: 3875946495892190403}
+  - {fileID: 3074733301096648040}
+  - {fileID: 3373778077624790874}
+  - {fileID: 7754766757684533924}
+  - {fileID: 2521999400269120241}
+  - {fileID: 6787316555569471285}
+  - {fileID: 1546947944153206129}
+  - {fileID: 8817341739057129773}
 --- !u!1 &8918592687226266845
 GameObject:
   m_ObjectHideFlags: 0
@@ -5314,7 +5356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3116076512757893682
 Transform:
   m_ObjectHideFlags: 0

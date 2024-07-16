@@ -46,6 +46,5 @@ public class SetterWeaponOnCar : MonoBehaviour
         }
 
         _packRockets[index - _correctRocketIndex].SetActive(true);
-        //_mine
     }
 }
