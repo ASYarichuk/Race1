@@ -6,12 +6,15 @@ public class Rocket : Ammunition
 {
     [SerializeField] private float _radiusBurst;
     [SerializeField] private ParticleSystem _explosion;
-    [SerializeField] private float _timeLifeBurst = 0.1f;
+    [SerializeField] private float _timeLifeBurst = 1.5f;
     [SerializeField] private GameObject _body;
+    [SerializeField] private ExplosionSound _exposionSound;
+    [SerializeField] private AudioSource _launcherSound;
 
     private void Start()
     {
         _explosion = GetComponentInChildren<ParticleSystem>();
+        _launcherSound.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -32,6 +35,7 @@ public class Rocket : Ammunition
         gameObject.GetComponent<CapsuleCollider>().radius = _radiusBurst;
         _explosion.transform.SetParent(null);
         _explosion.Play();
+        _exposionSound.Play();
         gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
         _body.SetActive(false);
         StartCoroutine(Destroy());

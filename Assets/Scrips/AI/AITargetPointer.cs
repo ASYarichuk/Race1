@@ -12,10 +12,13 @@ public class AITargetPointer : MonoBehaviour
 
     [SerializeField] private float _distanceToPoint;
 
+    private int _maxCountPoint;
+
     private void Awake()
     {
         _controllerPoints = FindObjectOfType<ControllerPoints>();
         _currentTarget = _controllerPoints.SetPoint(_currentNumberPoint);
+        _maxCountPoint = _controllerPoints.MaxCountPoint();
         _currentNumberPoint++;
     }
 
@@ -30,6 +33,11 @@ public class AITargetPointer : MonoBehaviour
         {
             _currentTarget = _controllerPoints.SetPoint(_currentNumberPoint);
             _currentNumberPoint++;
+
+            if (_currentNumberPoint >= _maxCountPoint)
+            {
+                _currentNumberPoint = 0;
+            }
         }
     }
 

@@ -33,14 +33,9 @@ public class CircleCounter : MonoBehaviour
             $"\nПройдено контрольных точек на круге   {_currentPoint} / {_maxPoint}";
     }
 
-    private void CheckCircle()
+    public int[] GiveCountPointAndCircle()
     {
-        if (_currentCircle == _maxCircle)
-        {
-            _placeTakenInRace.GetPlace(_player);
-            _placeInRace = _placeTakenInRace.GivePlace();
-            _endGame.gameObject.SetActive(true);
-        }
+        return new int[2] { _maxPoint, _maxCircle };
     }
 
     public void PointPassed()
@@ -53,6 +48,16 @@ public class CircleCounter : MonoBehaviour
         }
 
         CheckCircle();
+    }
+
+    private void CheckCircle()
+    {
+        if (_currentCircle == _maxCircle)
+        {
+            _placeTakenInRace.GetPlace(_player);
+            _placeInRace = _placeTakenInRace.GivePlace();
+            _endGame.gameObject.SetActive(true);
+        }
     }
 
     public int GivePlace()

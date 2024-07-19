@@ -6,9 +6,11 @@ public class Bomb : Ammunition
 {
     [SerializeField] private float _radiusBurst;
     [SerializeField] private ParticleSystem _explosion;
-    [SerializeField] private float _timeLifeBurst = 0.5f;
+    [SerializeField] private float _timeLifeBurst = 1.5f;
     [SerializeField] private float _forceGravity = 2f;
     [SerializeField] private GameObject _body;
+    [SerializeField] private ExplosionSound _exposionSound;
+    [SerializeField] private AudioSource _launcherSound;
 
     private Rigidbody _rigidbody;
 
@@ -16,6 +18,7 @@ public class Bomb : Ammunition
     {
         _explosion = GetComponentInChildren<ParticleSystem>();
         _rigidbody = GetComponent<Rigidbody>();
+        _launcherSound.Play();
     }
 
     private void FixedUpdate()
@@ -41,6 +44,7 @@ public class Bomb : Ammunition
         gameObject.GetComponent<CapsuleCollider>().radius = _radiusBurst;
         _explosion.transform.SetParent(null);
         _explosion.Play();
+        _exposionSound.Play();
         gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
         _body.SetActive(false);
         StartCoroutine(Destroy());

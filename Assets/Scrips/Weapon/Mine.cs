@@ -5,35 +5,36 @@ using UnityEngine;
 public class Mine : Ammunition
 {
     [SerializeField] private float _radiusBurst;
-    [SerializeField] private float _timeLifeBurst = 0.5f;
     [SerializeField] private GameObject _body;
-
-    private ParticleSystem _explosion;
-
-    private void Start()
-    {
-        _explosion = GetComponentInChildren<ParticleSystem>();
-    }
+    [SerializeField] private ExplosionSound _exposionSound;
+    [SerializeField] private Explosion _explosion;
 
     private void OnTriggerEnter(Collider other)
     {
-        Explosion();
+        if (other.gameObject.GetComponent<PlayerMover>() || 
+            other.gameObject.GetComponent<Ammunition>() || 
+            other.gameObject.GetComponent<AIMover>())
+        {
+            Explosion();
+        }
     }
 
-    private IEnumerator Destroy()
+    private void OnCollisionEnter(Collision collision)
     {
-        yield return new WaitForSeconds(_timeLifeBurst);
-
-        Destroy(_explosion.gameObject);
-        Destroy(gameObject);
+        if (collision.gameObject.GetComponent<PlayerMover>() ||
+            collision.gameObject.GetComponent<Ammunition>() || 
+            collision.gameObject.GetComponent<AIMover>())
+        {
+            Explosion();
+        }
     }
 
     private void Explosion()
     {
         gameObject.GetComponent<SphereCollider>().radius = _radiusBurst;
-        _explosion.transform.SetParent(null);
         _explosion.Play();
+        _exposionSound.Play();
         _body.SetActive(false);
-        StartCoroutine(Destroy());
+        Destroy(gameObject);
     }
 }

@@ -14,6 +14,11 @@ public class ControllerPoints : MonoBehaviour
 
     private Vector3 _target;
 
+    public int MaxCountPoint()
+    {
+        return _points.Length;
+    }
+
     public Vector3 SetPoint(int numberPoint)
     {
         _offsetX = Random.Range(_minValueOffset, _maxValueOffset);

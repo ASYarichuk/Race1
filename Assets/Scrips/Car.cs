@@ -22,7 +22,15 @@ public class Car : MonoBehaviour
     {
         if (other.TryGetComponent(out Ammunition ammunition))
         {
-            TakeDamage(ammunition.GiveDamage());
+            if (other.TryGetComponent(out Mine mine) && _isPlayer == false)
+            {
+                TakeDamage(mine.GiveDamage() / 10);
+                Debug.Log("Mine");
+            }
+            else
+            {
+                TakeDamage(ammunition.GiveDamage());
+            }
         }
     }
 
@@ -55,6 +63,7 @@ public class Car : MonoBehaviour
         {
             if (_isPlayer)
             {
+                Time.timeScale = 0f;
                 GetComponentInParent<LoseGame>().EnableWindow();
             }
             else

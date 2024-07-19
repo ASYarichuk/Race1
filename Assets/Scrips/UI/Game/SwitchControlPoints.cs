@@ -19,8 +19,7 @@ public class SwitchControlPoints : MonoBehaviour
         _controlPoints[_currentPoint].gameObject.SetActive(false);
         _currentPoint += 1;
 
-        //if (_currentPoint >= _controlPoints.Length)
-        if (_currentPoint >= 1)
+        if (_currentPoint >= _controlPoints.Length)
         {
             _currentPoint = 0;
         }

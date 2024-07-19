@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonContinue : MonoBehaviour
 {
-    private int indexMainMenu = 0;
+    private readonly int indexMainMenu = 0;
 
     public void OnClickButton()
     {
