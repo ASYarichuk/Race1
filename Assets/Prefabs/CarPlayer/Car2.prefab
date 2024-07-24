@@ -2096,6 +2096,7 @@ GameObject:
   - component: {fileID: 3762596295180681890}
   - component: {fileID: 8836793087784326728}
   - component: {fileID: 3127744900885264604}
+  - component: {fileID: -2734138360732325329}
   m_Layer: 0
   m_Name: Car2
   m_TagString: Untagged
@@ -2388,6 +2389,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2734138360732325329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7774109209876237441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2d439c7162ce4fbc6392ee3b78d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 3127744900885264604}
 --- !u!1 &7899852165611118125
 GameObject:
   m_ObjectHideFlags: 0

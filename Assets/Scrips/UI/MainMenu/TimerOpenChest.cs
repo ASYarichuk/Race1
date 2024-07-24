@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,11 +32,52 @@ public class TimerOpenChest : MonoBehaviour
     private readonly string _chestThreeState = "ChestThreeState";
     private readonly string _chestFourState = "ChestFourState";
 
+    private DateTime _dateTimeofPaused;
+
+    private string _timer = "Timer";
+    private string _oldTime = "OldTime";
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey(_timer))
+        {
+            Debug.Log("Stert");
+            _timeOpen = PlayerPrefs.GetFloat(_timer);
+            Debug.Log(_timeOpen);
+            _timeOpen -= (float)(DateTime.Now - DateTime.Parse(PlayerPrefs.GetString(_oldTime))).TotalSeconds;
+            Debug.Log(_timeOpen);
+
+        }
+    }
+
     private void Update()
     {
         _timeOpen -= Time.deltaTime;
 
         CheckTime();
+    }
+
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            PlayerPrefs.SetFloat(_timer, _timeOpen);
+            PlayerPrefs.SetString(_oldTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")) ;
+            Debug.Log("Paused");
+        }
+        else
+        {
+            _timeOpen = PlayerPrefs.GetFloat(_timer);
+            _timeOpen -= (float)(DateTime.Now - DateTime.Parse(PlayerPrefs.GetString(_oldTime))).TotalSeconds;
+            Debug.Log("OnPaused");
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.SetFloat(_timer, _timeOpen);
+        PlayerPrefs.SetString(_oldTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+        Debug.Log("Quit");
     }
 
     private void CheckTime()

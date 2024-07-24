@@ -14,11 +14,22 @@ public class Bomb : Ammunition
 
     private Rigidbody _rigidbody;
 
+    private readonly string _valueSound = "ValueSound";
+
+    private readonly string _isSound = "IsSound";
+
+    private readonly int _falseValue = 0;
+
     private void Start()
     {
         _explosion = GetComponentInChildren<ParticleSystem>();
         _rigidbody = GetComponent<Rigidbody>();
-        _launcherSound.Play();
+        _launcherSound.volume = PlayerPrefs.GetFloat(_valueSound);
+
+        if (PlayerPrefs.GetInt(_isSound) == _falseValue)
+        {
+            _launcherSound.Play();
+        }
     }
 
     private void FixedUpdate()

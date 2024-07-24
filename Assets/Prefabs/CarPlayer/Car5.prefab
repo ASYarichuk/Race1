@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 2395262104566236368}
   - component: {fileID: 2727083479020406372}
   - component: {fileID: 4113697147952146197}
+  - component: {fileID: 4360034108957102711}
   m_Layer: 0
   m_Name: Car5
   m_TagString: Untagged
@@ -558,6 +559,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4360034108957102711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445473139684108229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2d439c7162ce4fbc6392ee3b78d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 4113697147952146197}
 --- !u!1 &480226397175010424
 GameObject:
   m_ObjectHideFlags: 0

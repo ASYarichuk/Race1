@@ -1351,6 +1351,7 @@ GameObject:
   - component: {fileID: 4909845597873901664}
   - component: {fileID: 5284980337393757649}
   - component: {fileID: 5700802125260798852}
+  - component: {fileID: -4270444181166023615}
   m_Layer: 0
   m_Name: Car4
   m_TagString: Untagged
@@ -1543,10 +1544,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6328cf5ec4178bc46809b8983f4442f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxCircle: 3
-  _maxPoint: 4
-  _currentCircle: 0
-  _currentPoint: 0
 --- !u!82 &5700802125260798852
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1643,6 +1640,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4270444181166023615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850285639605031060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2d439c7162ce4fbc6392ee3b78d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 5700802125260798852}
 --- !u!1 &3031451722668783589
 GameObject:
   m_ObjectHideFlags: 0

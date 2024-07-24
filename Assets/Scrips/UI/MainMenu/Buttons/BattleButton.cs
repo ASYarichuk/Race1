@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BattleButton : MonoBehaviour
 {
     [SerializeField] private List<string> _scenes;
-    [SerializeField] private Resurs _resurs;
+    [SerializeField] private Energy _resurs;
     [SerializeField] private int _countEnergyForBattle = 10;
 
     private readonly string _isMission = "IsMission";

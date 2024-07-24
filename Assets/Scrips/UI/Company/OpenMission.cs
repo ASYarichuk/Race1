@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class OpenMission : MonoBehaviour
 {
     [SerializeField] private string _scene;
-    [SerializeField] private Resurs _resurs;
+    [SerializeField] private Energy _resurs;
     [SerializeField] private int _countEnergyForBattle = 10;
     [SerializeField] private int _indexMission;
 

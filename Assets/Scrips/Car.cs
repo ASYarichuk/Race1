@@ -25,7 +25,6 @@ public class Car : MonoBehaviour
             if (other.TryGetComponent(out Mine mine) && _isPlayer == false)
             {
                 TakeDamage(mine.GiveDamage() / 10);
-                Debug.Log("Mine");
             }
             else
             {
