@@ -11,6 +11,11 @@ public class ActivatorStars : MonoBehaviour
 
     public void Activate(int index)
     {
+        if (index > _maxStars)
+        {
+            index = _maxStars;
+        }
+
         for (int i = 0; i < index; i++)
         {
             _stars[i].SetActive(true);

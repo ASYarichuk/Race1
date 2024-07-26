@@ -33,7 +33,7 @@ public class PathPaint : MonoBehaviour
             }
             else if(i == 0)
             {
-                previousPoint = _points[_points.Count - 1].position;
+                previousPoint = _points[^1].position;
             }
 
             Gizmos.DrawLine(previousPoint, currentPoint);

@@ -13,6 +13,8 @@ public class CorrecterUsername : MonoBehaviour
 
     private string _currentName;
 
+    private string _currentUserName = "UserName";
+
     private void Update()
     {
         _currentName = _username.text;
@@ -26,6 +28,7 @@ public class CorrecterUsername : MonoBehaviour
     public void OnClickButtonYES()
     {
         _currentUsername.text = _currentName;
+        PlayerPrefs.SetString(_currentUserName, _currentName);
         _correcterName.SetActive(false);
     }
 
